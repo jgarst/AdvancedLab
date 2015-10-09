@@ -1,3 +1,5 @@
+Copyrighted materials are encrypted with git-crypt. Ask Jared For the key.
+
 Ongoing work for the Davis Advanced Lab (122). Folders correspond to
 individual elements of the course. What follows is a current state
 
