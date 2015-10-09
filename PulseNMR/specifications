@@ -1,0 +1,55 @@
+Specifications:
+
+Magnet -
+    Field Strength in gap 3500 Gauss (Nominal)
+    Gap 1.1 inches
+    Uniformity 0.01% over 1cm volume
+    Carrage Horizontal -Vertical Motion +- 2cm
+    Temperature Coefficient 4 Gauss/C
+    Weight 42 Lbs
+    Lubricate bearings with WD-40
+
+Power Supply - Tripple Output
+    5 volts @ 6A
+    15 volts @ 1A
+    -15 volts @ 1A
+    Line regulation +-0.05% for 10% line change
+    Ripple 2 mv rms maximumz
+    Load regulation +-0.05% for 50% load change
+    Weight 15 lbs
+
+Pulse Programmer PP-101
+    A-Pulse 1-30 ms 4 volt positive
+    B-Pulse 1-30 ms 4 volt positive
+    Delay time 10 us - 9.99 S
+    Mode Internal, External Pulse, Manual
+    Repitition time: 1ms to 10s
+    Meiboom -Gill Phase shift pulse
+    Scope Synchronizing Pulse either at A or B
+    Number of B pulses: 0-99
+
+Oscillator Amplifier Mixer PT-1501
+    15MHz Digitally Synthesized Oscillator
+    Frequency Resolution 10Hz
+    Frequency Accuracy: 0.005%
+    CW-RF output level -13 db
+    Peak output power 150 watts (nominal)
+    Mixer input level: 50 mv rms (max)
+    Mixer output level: 2 v rms (max)
+    mixer bandwidth: 500 khz
+
+Receiver PR 1501
+    Center Frequency: 15 MHz (nominal) Tunable
+    Bandwidth 200 khz
+    Sensitivity 8uV for full scale output
+    Output voltage: 0-10 volts
+    Gain range 60db (typical)
+    Equivalent Noise Voltage: 1.5 mV rms
+    RF Output Level: 50 mV
+    Time Constants: 0.01, 0.03, 0.1, 0.3 ms
+
+Sample Probe
+    Transmitter Coils in Helmholtz configuration
+    12 Gauss rotating field at Sample
+    Receiver Coil
+    Special Cables for transmitter and receiver

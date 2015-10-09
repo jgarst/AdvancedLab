@@ -1,0 +1,27 @@
+To find the efficiency, we can ask how many particles we expect in the
+window after each counted particle. This will be
+$$
+\frac{\text{uncounted}}{\text{counted}} = \sum_{n=0}^{\infty} np\left(n\right) =
+\left<np\left(n\right)\right>
+$$
+
+Where $p(n)$ follows is the poisson probability
+$\frac{\mu^ne^{-\mu}}{n!}$. The fast way to solve this is to remember
+or derive the factorial moments of the poisson
+distribution.
+\begin{align*}
+\left<p\left(n\right)\right> &= \mu^0 \\
+\left<np\left(n\right)\right> &= \mu^1 \\
+\left<n(n-1)p\left(n\right)\right> &= \mu^2 \\
+\text{...}
+\end{align*}
+
+Using this solution
+
+$$
+\frac{\text{counted}}{\text{total}} =
+\frac{\text{counted}}{\text{counted} + \text{uncounted}} = \frac{1}{1
+  + \frac{\text{uncounted}}{\text{counted}}} = \frac{1}{1 +
+  \left<np\left(n\right)\right>} = \frac{1}{1 + \mu}
+$$
+

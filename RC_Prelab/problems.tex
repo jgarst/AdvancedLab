@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{circuitikz}
+
+\begin{document}\noindent
+
+\begin{enumerate}
+\item
+Consider the following simple circuit:
+
+\begin{center}
+  \begin{circuitikz} \draw
+    ( 0, 0) node[anchor=south]{$V_{in}$}
+            to[C, l=$C$, o-*]            ( 4, 0  ) 
+            to[R, l=$R$]                 ( 4,-2  ) node[ground]{}
+    ( 4, 0) to[short, -o]                ( 6, 0  ) node[anchor=south]{$V_{out}$};
+  \end{circuitikz}
+\end{center}
+
+Let the input voltage $V_{in}$ be a sinusoidally varying function with amplitude
+$V_0$ and angular frequency $\omega$.
+
+\begin{enumerate}
+  \item 
+  Calculate the gain $g$ and phase shift $\phi$ for the output voltage
+  relative to the input voltage.  
+  \item Plot $g$ and $\phi$ as a function of
+  $\omega / \omega_0$ where $\omega_0 = 1 / RC$. For each of these functions,
+  use the combination of linear or logarithmic axes for g and for $\phi$ that
+  you think are most appropriate.
+\end{enumerate}
+
+\item
+Consider the following simple circuit:
+\begin{center}
+  \begin{circuitikz} \draw
+    ( 0, 0) node[anchor=south]{$V_{in}$}
+            to[R, l=$R$, o-*]            ( 4, 0  )
+            to[L, l=$L$]                 ( 4,-2  ) node[ground]{}
+    ( 4, 0) to[short, -o]                ( 6, 0  ) node[anchor=south]{$V_{out}$};
+  \end{circuitikz}
+\end{center}
+Let the input voltage $V_{in}$ be a sinusoidally varying function with amplitude
+$V_0$ and angular frequency $\omega$.
+
+\begin{enumerate}
+  \item Calculate the gain $g$ and phase shift $\phi$ for the output voltage
+    relative to the input voltage.
+  \item Plot $g$ and $\phi$ as a function of $\omega / \omega_0$ where $\omega_0
+    = R/L$. For each of these functions, use the combination of linear or
+    logarithmic axes for $g$ and for $\phi$ that you think are most appropriate.
+\end{enumerate}
+
+\pagebreak
+\item Consider the following not-so-simple circuit:
+\begin{center}
+  \begin{circuitikz} \draw
+    ( 0, 0) node[anchor=south]{$V_{in}$}
+            to[R, l=$R$, o-*]           ( 4, 0  )
+            to[short, *-*]              ( 4,-1  )
+            to[short, *-]               ( 3,-1  )
+            to[C, l_=$C$]               ( 3,-4  )  
+            to[short, -*]                ( 4,-4  )
+            to[short, *-]               ( 4,-4.5)  node[ground]{}
+    ( 4,-1) to[short]                   ( 5,-1  )
+            to[L, l=$L$]                ( 5,-4  )
+            to[short, -*]               ( 4,-4  )
+    ( 4, 0) to[short, -o]               ( 6, 0  )  node[anchor=south]{$V_{out}$};
+  \end{circuitikz}
+\end{center}
+
+\begin{enumerate}
+  \item What is the gain $g$ for very low frequencies $\omega$? What is the gain
+    for very high frequencies? Remember that capacitors act like dead shorts and
+    open circuits at high and low frequencies, respectively, and inductors
+    behave in just the opposite way.
+  \item At what frequency do you suppose the gain of this circuit is maximized?
+  \item Using the rules for impedance and the generalized voltage divider,
+    determine the gain $g(\omega)$ for this circuit and show that your answers
+    to (a) and (b) are correct.
+\end{enumerate}
+
+\pagebreak
+\begin{figure}[h!]
+\begin{center}
+\begin{circuitikz} \draw
+  node[ground]{} ( 0, 0) to[sinusoidal voltage source] ( 0, 4  )
+                         to[C, l=$1\mu F$]             ( 4, 4  )
+                         to[R, l=$100\Omega$]          ( 4, 0.5)
+                         to[short]                     ( 0, 0.5);
+\end{circuitikz}
+\caption{RC Circuit}
+\label{c:RC}
+\end{center}
+\end{figure}
+
+\item
+For the capacitor in Circuit \ref{c:RC}, calculate the reactance for all five of
+the following frequencies:10 Hz, 100 Hz, 1,000 Hz, 10,000 Hz, 100,000 Hz.
+
+\item
+Using elementary SI units, determine the units of capacitive reactance
+and show that they are equivalent to ohms.
+
+\item
+Predict the minimum impedance for Circuit \ref{c:RC}. Explain your reasoning.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{circuitikz} \draw
+  node[ground]{} ( 0, 0) to[sinusoidal voltage source] ( 0, 4  )
+                         to[L, l=$44 mH$]             ( 4, 4  )
+                         to[R, l=$100\Omega$]          ( 4, 0.5)
+                         to[short]                     ( 0, 0.5);
+\end{circuitikz}
+\caption{LR Circuit}
+\label{c:LR}
+\end{center}
+\end{figure}
+
+\item For the inductor in Circuit \ref{c:LR}, calculate the reactance for all
+  five of the following frequencies: 10 Hz, 100 Hz, 1,000 Hz, 10,000 Hz, and
+  100,000 Hz.
+\item Using elementary SI units determine the units of inductive reactance and
+  show that they are equivalent to ohms.
+\item Predict the minimum impedance for Circuit \ref{c:LR}. Explain your
+  reasoning.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{circuitikz} \draw
+  node[ground]{} ( 0, 0) to[sinusoidal voltage source] ( 0, 4  )
+                         to[C, l=$1 \mu F$]            ( 2, 4  )
+                         to[L, l=$44 mH$]              ( 4, 4  )
+                         to[R, l=$100\Omega$]          ( 4, 0.5)
+                         to[short]                     ( 0, 0.5);
+\end{circuitikz}
+\caption{LRC Circuit}
+\label{c:LRC}
+\end{center}
+\end{figure}
+
+\item Predict the minimum impedance for Circuit \ref{c:LRC}. Explain your
+  reasoning.
+\item Predict the resonant frequency for Circuit \ref{c:LRC}. Explain your
+  reasoning
+\item Calculate the impedance, $Z$, for circuit \ref{c:LRC} at the following
+  five frequencies: 10 Hz, 100 Hz, 1,000 Hz, 10,000 Hz and 100,000 Hz. Next
+  calculate the peak to peak current at these five frequencies, when the applied
+  voltage is 1 volt peak to peak. Remember, for a series circuit $I_{pp} =
+  \frac{V_{applied pp}}{Z}$.
+\item Using the numbers from your calculations in Question 9 above, draw a
+  practice plot of the current in circuit 3 versus the frequency. See the third
+  paragraph in the Procedure section below for information on how to construct
+  this plot.
+
+\end{enumerate}
+\end{document}
+
+

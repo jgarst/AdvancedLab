@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}\noindent
+
+\begin{enumerate}
+\item 
+\begin{align*}
+V_{in}(\omega, t) &= I(\omega, t)Z(\omega) \\
+V_{in}(\omega, t) &= I(\omega, t)\left[ R + \frac{1}{i\omega C}\right] \\
+\frac{i \omega C V_{in}(\omega, t)}{1 + i\omega C R} &= I(\omega, t) 
+\end{align*}
+\begin{align*}
+\frac{1}{CR} &= \omega_0\\
+\omega C R &= \frac{\omega}{\omega_0} = \omega'
+\end{align*}
+\begin{align*}
+V_{out}(\omega, t) &= I(\omega, t) R \\
+                  &= \frac{i\omega C R V_{in}(\omega, t)}{1 + i\omega C R} =
+\frac{i\omega' V_{in}(\omega, t)}{1 + i\omega'}\\
+       g e^{i \phi} &= \frac{i \omega'}{1 + i \omega'}  = \frac{\omega'}{\omega' - i}\\
+       g &= \frac{\omega'}{\sqrt{1 + \omega'^2}}\\
+e^{i\phi} &= \frac{1}{g}\frac{i\omega'}{1 + i\omega'} = |A| i(1 - i\omega')
+= |A| (\omega' + i) \\
+\phi &= \tan^{-1}(1/\omega') = \tan^{-1}(1/\omega C R)
+\end{align*}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,22 @@
+# remove intermediate latex steps
+aux/
+.aux/
+*\.log
+*\.out
+*\.fls
+*\.aux
+*\.fdb_latexmk
+*\.bbl
+Python-FirstSteps.pdf
+WritingSample.pdf
+
+# remove backups
+*~
+*#*#
+.#*
+
+# fuse - deleted file still in use
+.fuse*
+
+# remove ipython checkpoints
+*.ipynb_checkpoints

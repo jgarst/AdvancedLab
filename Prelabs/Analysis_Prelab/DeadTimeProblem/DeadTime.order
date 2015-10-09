@@ -1,0 +1,16 @@
+{"format":".ipynb",
+   "cells": [
+    {
+     "cell_type":"markdown",
+     "file":"DeadTime_problem.tex"
+    },
+    {
+     "cell_type":"markdown",
+     "file":"DeadTime_solution.tex"
+    },
+    {
+     "cell_type":"python",
+     "file":"DeadTime_plot.py"
+    }
+   ]
+}
