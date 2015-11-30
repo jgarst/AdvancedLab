@@ -3,12 +3,10 @@ $pdflatex = "pdflatex --shell-escape -interaction=batchmode %O %S";
 $pdf_previewer = 'evince';
 #$aux_dir = 'aux';
 
-# Remove all files except dvi, ps, pdf
-$cleanup_mode = 2;
 
 @default_files = ("Python-FirstSteps.tex", "WritingSample.tex");
 
-$outdir = "ClassMaterials";
+$out_dir = "ClassMaterials";
 
 # Do not run a previewer
 $preview_mode = 0;

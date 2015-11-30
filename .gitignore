@@ -7,8 +7,6 @@ aux/
 *\.aux
 *\.fdb_latexmk
 *\.bbl
-Python-FirstSteps.pdf
-WritingSample.pdf
 
 # remove backups
 *~
