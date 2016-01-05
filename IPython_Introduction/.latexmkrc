@@ -6,8 +6,6 @@ $pdf_previewer = 'evince';
 
 @default_files = ("Python-FirstSteps.tex", "WritingSample.tex");
 
-$out_dir = "ClassMaterials";
-
 # Do not run a previewer
 $preview_mode = 0;
 

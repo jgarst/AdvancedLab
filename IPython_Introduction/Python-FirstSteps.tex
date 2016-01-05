@@ -1,16 +1,4 @@
-\documentclass[justified]{tufte-handout}
-\usepackage{graphicx,
-            color,
-            subfig,
-            tikz,
-            enumitem,
-            amsmath,
-            relsize,
-            listings,
-            fancyvrb}
-\usepackage[export]{adjustbox}
-
-\hypersetup{colorlinks}
+\documentclass[justified, nobib]{tufte-handout}
 
 \title{Data Analysis with Python}
 \author{Jared Garst}
@@ -18,12 +6,14 @@
 
 % itemized list with number and description
 
+\newcommand{\ipythonTutorialLink}
+  {http://ipython.readthedocs.org/en/stable/interactive/index.html}
+\newcommand{\jupyterInfoLink}
+  {http://jupyter-notebook.readthedocs.org/en/latest/notebook.html\#basic-workflow}
 \newcommand{\anacondaLink}{https://store.continuum.io/cshop/anaconda/}
 \newcommand{\email}{mailto:jgarst@ucdavis.edu}
 \newcommand{\aboutUnicodeLink}
   {http://www.joelonsoftware.com/articles/Unicode.html}
-\newcommand{\ipythonTutorialLink}
-  {http://ipython.org/ipython-doc/stable/interactive/tutorial.html}
 \newcommand{\linguaFrancaLink}{http://en.wikipedia.org/wiki/Lingua_franca}
 \newcommand{\librariesLink}{http://www.scipy.org/index.html}
 \newcommand{\customizeDirectoryLink}
@@ -39,8 +29,8 @@
   {http://www.ibm.com/developerworks/library/l-prog/}
 \newcommand{\matplotlibGalleryLink}{http://matplotlib.org/gallery.html}
 
-  \newcommand{\myMarginNote}[3][-9px]{\marginnote{\centering{#2} \\ \vspace{#1}
-      \justify{#3}}}
+\newcommand{\myMarginNote}[3][-9px]{\marginnote{\centering{#2} \\ \vspace{#1}
+\justify{#3}}}
 
   \newcommand{\librariesNote} {\myMarginNote{\href{http://www.scipy.org/index.html}{libraries}}{numpy, scipy,
       matplotlib, and pandas will help you calculate, reference common
@@ -59,8 +49,8 @@
 
   \newcommand{\argumentNote} {\myMarginNote{argument unpacking}
      {\texttt{function (*iter)} passes the elements of \texttt{itr} to
-      \texttt{function} in order. \texttt{function (**dict)} passes them based on
-      their keys.}}
+      \texttt{function} in order. \texttt{function (**dict)} passes them based
+      on their keys.}}
 
   \newcommand{\nonPrimativeNote} {\myMarginNote[-4px]{two types of variables}
     {The copying code produces different results when the strings are not
@@ -73,28 +63,13 @@
 
   \newcommand{\floatNote}{\footnote{ Float stands for floating
   point number', otherwise known as a decimal number. Though not usually
-  relevant for data analysis, be aware that \texttt{int} and \texttt{float} have
-  detailed differences in precision and speed.}}
-
-\lstset{showstringspaces=false
-        basicstyle=\linespread{.94}\ttfamily,
-        fancyvrb=true,
-        mathescape=true,
-        language=python,
-        escapechar=\@
-        }
-
-
-\captionsetup[subfigure]{labelformat=empty, position=top}
-\setlength\parindent{0pt}
-
-\newenvironment{absolutelynopagebreak}
-  {\par\nobreak\vfil\penalty0\vfilneg\vtop\bgroup}
-  {\par\xdef\tpd{\the\prevdepth}\egroup\prevdepth=\tpd}
+  relevant for data analysis, be aware that \texttt{int} and \texttt{float}
+  have detailed differences in precision and speed.}}
 
 \begin{document}
 \maketitle
 \bigskip
+
 
 \noindent
 Python is a high level scripting language. While there are many reasons to like
@@ -108,40 +83,40 @@ Python. Briefly, some exceptional Python features are:
 \item[Beautiful Syntax] \hfill \\
   Python will make your life easier, by encouraging simple, clean, easy to read
   code.
-\item[The Python Shell] \hfill \\
-  If you don't need to keep your code, you can pass it to Python as a series of
-  commands. This allows programmers to gracefully move their files and explore
-  their data.
-\item[No Types] \hfill \\
-  There is no mechanism to guarantee the data you store will retain important
-  properties.
 \item[Interpreted] \hfill \\
   The code you write is the code that runs. Nothing will be checked, nothing
   will be optimised.
+\item[No Types] \hfill \\
+  There is no easy way to guarentee the behavior of the data you store.
 \item[Program Control Through Indentation] \hfill \\
   Other languages use curly brackets \{\} to determine program flow, and tabs by
   convention for readability. Python conflates the two.
+\item[Batteries Included] \hfill \\
+  Python makes it easy to do common tasks, has an extensive set of additional
+  libraries, and a vibrant community maintaining them.
 \end{description}
 
 \noindent
-IPython is an expansion of the Python shell, designed for a more exploratory
-approach to programming than your typical editor. It gives you a unique
-structure, and tools to view your output. It also provides you with many tools
-that will help you become a better programmer outside this class --- we won't get
-into many of those, but you can use the standard
-\href{\ipythonTutorialLink}{tutorial} to learn them.
+IPython is an interactive version of python, designed for a more exploratory
+approach to programming and analysis.
+\sout{IPython} Jupyter notebooks allow you to quickly visualize your analysis,
+and provide an easy record of your process.
+Like any tools, you can become expert in
+\href{\jupyterInfoLink}{Jupyter notebooks} and
+\href{\ipythonTutorialLink}{IPython} syntax, but you won't need to for this
+course, and we won't cover those skills.
 
 \smallskip
 \noindent
 There are two versions of Python that you will encounter in the wild, Python 2
 and Python 3. Python 3 is a take-no-prisoners reimagining of the the
-language. The result is a slightly smoother language, that breaks everything
-down to the print statement in Python 2. Most libraries support both Python 2
-and 3, but most code is in Python 2. This means the appropriate version will
-depend on how old your project is. If you are unsure, use Python 2, and consider
-that unless you use lots of
-\href{\aboutUnicodeLink}{unicode}, switching
-to Python 3 will provide only a small benefit to your quality of life.
+language.
+The result is a smoother language, that breaks everything down to the print
+statement in Python 2.
+Most libraries support both Python 2 and 3, but most code is in Python 2.
+This means the appropriate version will depend on how old your project is.
+This introduction will use Python 2 --- but for this course there aren't huge
+differences between the choices.
 
 \section*{Setup and Startup}
 If you have never set up a programming environment before, the easiest way to
@@ -166,17 +141,20 @@ workflow.
 \noindent
 There are a few flavors of help commands available in IPython. Familiarity with
 the options allows you to reference the manuals, or explore specific parts of
-the language.  \marginnote[25pt]{\centering{A quick start: \\ \texttt{help ()} ---
-    \texttt{help (list)} \\ \texttt{?} --- \texttt{import numpy; numpy?} ---
-    \texttt{numpy??} \\ \texttt{numpy.*cos*?} --- \texttt{numpy.arc<tab>} ---
-    \texttt{Ctrl-m h}}}
+the language.  \marginnote[25pt]{\centering{A quick start: \\
+        \texttt{help ()}
+    --- \texttt{help (list)} \\ \texttt{?}
+    --- \texttt{import numpy; numpy?}
+    --- \texttt{numpy??} \\ \texttt{numpy.*cos*?}
+    --- \texttt{numpy.arc<tab>}
+    --- \texttt{Ctrl-m h}}}
 \\
 \begin{description}[font=\tt, leftmargin=0cm]
-\item[help ()] is the native python help command. Type \texttt{help ()} into the
-  first cell, and execute with shift-enter. This is a good place to spend time
-  getting familiar with the language, but you can also ask it about specific
-  objects. For example, run \texttt{help (list)} to see some common list
-  manipulations.
+\item[help ()] is the native python help command. Type \texttt{help ()} into
+  the first cell, and execute with shift-enter. This is a good place to spend
+  time getting familiar with the language, but you can also ask it about
+  specific objects. For example, run \texttt{help (list)} to see some common
+  list manipulations.
 \item[?] is IPython's own help command, and it is often nicer to use than
   \texttt{help}. Try running \texttt{?} to see an introduction to IPython. Like
   help you can also ask more specific commands, run \texttt{import numpy;
@@ -190,8 +168,8 @@ the language.  \marginnote[25pt]{\centering{A quick start: \\ \texttt{help ()} -
   see a verbatum list of all special IPython commands, including the magic
   functions.
 \item[<tab>] will provide code completion. Type but do not run
-  \texttt{numpy.arc} followed by a \texttt{<tab>} to have IPython suggest a list
-  of inverse trig functions.
+  \texttt{numpy.arc} followed by a \texttt{<tab>} to have IPython suggest a
+  list of inverse trig functions.
 \item[Control-m h] Provides a list of hotkeys for IPython notebooks. If you
   spend a lot of time These can
   really speed up your programming,
@@ -200,6 +178,7 @@ the language.  \marginnote[25pt]{\centering{A quick start: \\ \texttt{help ()} -
 \pagebreak
 
 \section*{First Steps}
+
 \begin{lstlisting}[language=Python]
   In [1]: import pandas as pd@\librariesNote@
           import numpy as np
@@ -377,19 +356,6 @@ already successfully executed.
   the variances? How do these compare to the mean and variance of $x$?
 \end{itemize}
 
-%\section*{Vocabulary}
-%\begin{description}
-%\item Types \hfill \\
-%  At the lowest level, your computer only works with numbers of finite size,
-%  which it can use to reference every color, character or process you might
-%  need to use. One of the first advances in programming was assigning 'types'
-%  to these numbers, so that your computer will
-
-%\item Object \hfill \\
-%Every piece of information your program tracks is not independent
-
-%\end{description}
-
 \pagebreak
 
 \section*{More Reading}
@@ -405,4 +371,3 @@ already successfully executed.
 
 \end{description}
 \end{document}
-
