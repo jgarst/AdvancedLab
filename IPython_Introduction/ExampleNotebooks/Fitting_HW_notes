@@ -1,0 +1,27 @@
+Point out:
+    get eyes on data as fast as possible.
+
+    might need to fiddle with bin size
+
+    finished plot should have label tweaking
+
+    what do 'error of the mean' and 'error of a count' mean again?
+
+    outlier:
+        How far out is it? How far out is it really?
+        Does it fit with rest of the distribution? (not really)
+        What is it going to contribute to chi squared?
+        What happens with all those zero bins?
+        What is dangerous about throwing it out after looking at the analysis?
+
+    Why didn't I fit the area?
+    Good way to evaluate an analysis - plot the residuals
+    what does a good residual plot look like?
+    how about a bad one?
+    how about this one?
+
+
+Might come up:
+    list comprehension: [stuff(var)
+                         for var in list
+                         if condition]
