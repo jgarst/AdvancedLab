@@ -4,8 +4,6 @@
 \author{Jared Garst}
 \date{\today} % remove title space
 
-% itemized list with number and description
-
 \newcommand{\ipythonTutorialLink}
   {http://ipython.readthedocs.org/en/stable/interactive/index.html}
 \newcommand{\jupyterInfoLink}
@@ -70,7 +68,6 @@
 \maketitle
 \bigskip
 
-
 \noindent
 Python is a high level scripting language. While there are many reasons to like
 or dislike Python, we are introducing it to you because it is becoming the
@@ -89,7 +86,7 @@ Python. Briefly, some exceptional Python features are:
 \item[No Types] \hfill \\
   There is no easy way to guarentee the behavior of the data you store.
 \item[Program Control Through Indentation] \hfill \\
-  Other languages use curly brackets \{\} to determine program flow, and tabs by
+  Other languages use curly brackets \pythoninline{{}} to determine program flow, and tabs by
   convention for readability. Python conflates the two.
 \item[Batteries Included] \hfill \\
   Python makes it easy to do common tasks, has an extensive set of additional
@@ -141,14 +138,18 @@ workflow.
 \noindent
 There are a few flavors of help commands available in IPython. Familiarity with
 the options allows you to reference the manuals, or explore specific parts of
-the language.  \marginnote[25pt]{\centering{A quick start: \\
-        \texttt{help ()}
-    --- \texttt{help (list)} \\ \texttt{?}
-    --- \texttt{import numpy; numpy?}
-    --- \texttt{numpy??} \\ \texttt{numpy.*cos*?}
-    --- \texttt{numpy.arc<tab>}
-    --- \texttt{Ctrl-m h}}}
-\\
+the language.  \marginnote[25pt]{
+\centering{
+  A quick start: \\
+    \texttt{In~[1]:~help()} \\
+    \texttt{In~[2]:~help(list)} \\
+    \texttt{In~[3]:~?} \\
+    \texttt{In~[4]:~import~numpy; \\
+                   numpy?} \\
+    \texttt{In~[5]:~numpy??} \\
+    \texttt{In~[6]:~numpy.*cos*?} \\
+    \texttt{In~[7]:~numpy.arc<tab>} \\
+    \texttt{In~[8]:~Ctrl-m h}}} \\
 \begin{description}[font=\tt, leftmargin=0cm]
 \item[help ()] is the native python help command. Type \texttt{help ()} into
   the first cell, and execute with shift-enter. This is a good place to spend
@@ -177,47 +178,9 @@ the language.  \marginnote[25pt]{\centering{A quick start: \\
 
 \pagebreak
 
+\include{first_example}
+
 \section*{First Steps}
-
-\begin{lstlisting}[language=Python]
-  In [1]: import pandas as pd@\librariesNote@
-          import numpy as np
-          import matplotlib.pyplot as plt
-          import scipy.stats as st
-          %matplotlib inline
-  In [2]: capData = pd.read_csv('DataFile.csv')
-          print capData.head()@\cleaningNote@
-          print capData.tail()
-          @\hfill \texttt{*Some Numbers*}@
-  In [4]: allData = capData.stack()
-          binwidth = 0.2;
-          cmin = capData.min();
-          cmax = capData.max()
-          bins = np.arange(cmin, cmax, binwidth)
-  In [5]: fig, ax = plt.subplots();
-          ax.set_xlim([cmin, cmax]);
-          ax.hist(list(allData), bins=bins)
-  In [6]: N = len(allData)
-          print "N is", N
-          mu = np.mean(allData)
-          print "mu is", "{0:.2f}".format(mu) @\formatNote@
-          var = np.var(allData)
-          print "varience is", "{0:.2f}".format(var)
-          @\hfill \texttt{N is 1536} @
-          @\hfill \texttt{mu is 94.50} @
-          @\hfill \texttt{variance is 3.02} @
-  In [7]: area = N * binwidth
-          params = {'loc':mu, 'scale':np.sqrt(var)}
-          fit = area * st.norm(**params).pdf(bins)@\argumentNote@
-          ax.plot(bins, fit, 'r--', linewidth=3);
-          fig
-          @\vspace{-15px}
-          \begin{figure}[h!]
-            \includegraphics[width=0.63\textwidth, right]{figs/firstPlot.png}
-          \end{figure}@
-
-
-\end{lstlisting}
 
 \section*{Python Gotchas}
 Some of the ways that python makes your life easier can send your program off
@@ -226,32 +189,32 @@ the rails, if you don't understand what the computer is doing.
 \newthought{TYPES} still exist in python, even if you can't enforce
 them. Consider the following python code:
 \begin{adjustwidth}{2.5em}{0pt}
-\begin{lstlisting}[language=Python]
-In [1]: print 3/2, 3.0/2.0
-@\hfill \texttt{1 1.5}@
-\end{lstlisting}
+%\begin{lstlisting}[language=Python]
+%In [1]: print 3/2, 3.0/2.0
+%@\hfill \texttt{1 1.5}@
+%\end{lstlisting}
 \end{adjustwidth}
 
 \noindent
 In the underlying C code, an operation on two integers always returns an
 integer, because floating point\floatNote{} \;math is much slower. In python,
-you can check a type with \lstinline !type(!object\lstinline !)!, and enforce a
-type with \lstinline !assert! and \lstinline !isinstance!.
+you can check a type with \pythoninline{type(object)}, and enforce a
+type with \pythoninline{assert} and \pythoninline{isinstance}.
 \begin{adjustwidth}{2.5em}{0pt}
-\begin{lstlisting}[language=Python]
-In [2]: print type(3), type(3.0)
-@\hfill \texttt{<type 'int'> <type 'float'>}@
-In [3]: assert isinstance(3, int)
-\end{lstlisting}
+%\begin{lstlisting}[language=Python]
+%In [2]: print type(3), type(3.0)
+%@\hfill \texttt{<type 'int'> <type 'float'>}@
+%In [3]: assert isinstance(3, int)
+%\end{lstlisting}
 \end{adjustwidth}
-\lstinline !assert! will stop the program with an error if the next statement is
+\pythoninline{assert} will stop the program with an error if the next statement is
 not true. Python 3 is smarter about division, and will return 1.5 for both
 calculations. In the likely event that you cannot use python 3, you can still
 import the behavior by including
 \begin{adjustwidth}{2.5em}{0pt}
-\begin{lstlisting}[language=Python]
-from __future__ import division
-\end{lstlisting}
+%\begin{lstlisting}[language=Python]
+%from __future__ import division
+%\end{lstlisting}
 \end{adjustwidth}
 at the top of your file or notebook.
 
@@ -282,17 +245,17 @@ object itself.
 Because the first case is common and the second case is expensive, python
 duplicates the reference by default.
 \begin{adjustwidth}{2.5em}{0pt}
-\begin{lstlisting}[language=Python]
-In[1]: import numpy as np
-In[2]: lst1 = np.array([`An Object'],
-                       dtype=object);
-       lstcpy = lst1; lst2 = lst1.copy()
-In[3]: print lst1, lstcpy, lst2
-@\hfill \texttt{[`An Object'] ['An Object'] ['An Object']}@
-In[4]: lstcpy[0] = 'A New Object'
-In[5]: print lst1, lstcpy, lst2
-@\hfill \texttt{['A New Object'] ['A New Object'] ['An Object']}@ @\nonPrimativeNote@
-\end{lstlisting}
+%\begin{lstlisting}[language=Python]
+%In[1]: import numpy as np
+%In[2]: lst1 = np.array([`An Object'],
+%                       dtype=object);
+%       lstcpy = lst1; lst2 = lst1.copy()
+%In[3]: print lst1, lstcpy, lst2
+%@\hfill \texttt{[`An Object'] ['An Object'] ['An Object']}@
+%In[4]: lstcpy[0] = 'A New Object'
+%In[5]: print lst1, lstcpy, lst2
+%@\hfill \texttt{['A New Object'] ['A New Object'] ['An Object']}@ @\nonPrimativeNote@
+%\end{lstlisting}
 \end{adjustwidth}
 
 
@@ -301,15 +264,15 @@ every time you add a cell. This allows you to create confusing code, by removing
 cells or executing them in a strange order.
 
 \begin{adjustwidth}{2.5em}{0pt}
-\begin{lstlisting}[language=Python]
-In [3]: message = 'IPython does not have to run
-          from top to bottom'
-In [1]: message = 'Good luck debugging this'
-In [4]: print message
-  @\hfill \texttt{IPython does not have to run from top to bottom}@
-In [2]: print message
-  @\hfill \texttt{Good luck debugging this}@
-\end{lstlisting}
+%\begin{lstlisting}[language=Python]
+%In [3]: message = 'IPython does not have to run
+%          from top to bottom'
+%In [1]: message = 'Good luck debugging this'
+%In [4]: print message
+%  @\hfill \texttt{IPython does not have to run from top to bottom}@
+%In [2]: print message
+%  @\hfill \texttt{Good luck debugging this}@
+%\end{lstlisting}
 \end{adjustwidth}
 
 \noindent

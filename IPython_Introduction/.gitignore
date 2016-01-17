@@ -2,3 +2,7 @@
 *.blg
 *.synctex.gz
 _minted*
+
+first_example.tex
+first_example_files
+copying.tex
