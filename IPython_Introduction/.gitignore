@@ -2,7 +2,15 @@
 *.blg
 *.synctex.gz
 _minted*
+.doit.db
+__pycache__
 
 first_example.tex
 first_example_files
 copying.tex
+division.tex
+bin_centers.tex
+future_division.tex
+help_commands.tex
+types.tex
+notebook_nonlinear.tex

@@ -30,7 +30,7 @@
 \newcommand{\myMarginNote}[3][-9px]{\marginnote{\centering{#2} \\ \vspace{#1}
 \justify{#3}}}
 
-  \newcommand{\librariesNote} {\myMarginNote{\href{http://www.scipy.org/index.html}{libraries}}{numpy, scipy,
+\newcommand{\librariesNote} {\myMarginNote{\href{http://www.scipy.org/index.html}{libraries}}{numpy, scipy,
       matplotlib, and pandas will help you calculate, reference common
       functions, plot, and wrangle data. \texttt{\%matplotlib inline} is a
       `magic function', which tells IPython how to display plots.}}
@@ -40,26 +40,26 @@
     to check that the csv file doesn't have unexpected cruft at the ends. Always
     check that you are importing your intended data.}}
 
-  \newcommand{\formatNote} {\myMarginNote{\texttt{format}}
+\newcommand{\formatNote} {\myMarginNote{\texttt{format}}
      {adds external variables to strings, at specified precision.
       \texttt{\{0:.2f\}} is replaced by the first float argument of
       \texttt{format}, rounded to two decimal places.}}
 
-  \newcommand{\argumentNote} {\myMarginNote{argument unpacking}
+\newcommand{\argumentNote} {\myMarginNote{argument unpacking}
      {\texttt{function (*iter)} passes the elements of \texttt{itr} to
       \texttt{function} in order. \texttt{function (**dict)} passes them based
       on their keys.}}
 
-  \newcommand{\nonPrimativeNote} {\myMarginNote[-4px]{two types of variables}
+\newcommand{\nonPrimativeNote} {\myMarginNote[-4px]{two types of variables}
     {The copying code produces different results when the strings are not
       wrapped in numpy arrays. Why?}}
 
-  \newcommand{\matplotlibGalleryNote}{\footnote{You will need the syntax for
+\newcommand{\matplotlibGalleryNote}{\footnote{You will need the syntax for
       matplotlib. You can find everything with the help commands, or can get
       syntax and ideas from \href{\matplotlibGalleryLink}{example plots} that
       others have made.}}
 
-  \newcommand{\floatNote}{\footnote{ Float stands for floating
+\newcommand{\floatNote}{\footnote{ Float stands for floating
   point number', otherwise known as a decimal number. Though not usually
   relevant for data analysis, be aware that \texttt{int} and \texttt{float}
   have detailed differences in precision and speed.}}
@@ -81,13 +81,14 @@ Python. Briefly, some exceptional Python features are:
   Python will make your life easier, by encouraging simple, clean, easy to read
   code.
 \item[Interpreted] \hfill \\
-  The code you write is the code that runs. Nothing will be checked, nothing
-  will be optimised.
+  The code you write is the code that runs. Nothing will be changed, nothing
+  will be checked, nothing will be optimised.
 \item[No Types] \hfill \\
-  There is no easy way to guarentee the behavior of the data you store.
+  There is no easy way to specify how your data is to be interpreted.
 \item[Program Control Through Indentation] \hfill \\
-  Other languages use curly brackets \pythoninline{{}} to determine program flow, and tabs by
-  convention for readability. Python conflates the two.
+  Other languages use curly brackets \ipythoninline{{}} to determine program
+  flow, and tabs by convention for readability.
+  Python conflates the two.
 \item[Batteries Included] \hfill \\
   Python makes it easy to do common tasks, has an extensive set of additional
   libraries, and a vibrant community maintaining them.
@@ -140,47 +141,53 @@ There are a few flavors of help commands available in IPython. Familiarity with
 the options allows you to reference the manuals, or explore specific parts of
 the language.  \marginnote[25pt]{
 \centering{
-  A quick start: \\
-    \texttt{In~[1]:~help()} \\
-    \texttt{In~[2]:~help(list)} \\
-    \texttt{In~[3]:~?} \\
-    \texttt{In~[4]:~import~numpy; \\
-                   numpy?} \\
-    \texttt{In~[5]:~numpy??} \\
-    \texttt{In~[6]:~numpy.*cos*?} \\
-    \texttt{In~[7]:~numpy.arc<tab>} \\
-    \texttt{In~[8]:~Ctrl-m h}}} \\
+  A quick start: help commands\\}
+\input{help_commands}
+} \\
+
 \begin{description}[font=\tt, leftmargin=0cm]
-\item[help ()] is the native python help command. Type \texttt{help ()} into
-  the first cell, and execute with shift-enter. This is a good place to spend
-  time getting familiar with the language, but you can also ask it about
-  specific objects. For example, run \texttt{help (list)} to see some common
-  list manipulations.
-\item[?] is IPython's own help command, and it is often nicer to use than
-  \texttt{help}. Try running \texttt{?} to see an introduction to IPython. Like
-  help you can also ask more specific commands, run \texttt{import numpy;
-    numpy?} to see an overview of the exceptionally useful numpy module. If you
-  need all the gory details of an object, \texttt{numpy??} will give you the
-  source code.
-\item[<regex>?] allows you to use \texttt{?} to search through an object. Try
-  running \texttt{numpy.*cos*?} to see every function in numpy related to
-  $\cos$.
-\item[\%quickref] is a magic function', unique to IPython, that you can use to
-  see a verbatum list of all special IPython commands, including the magic
-  functions.
-\item[<tab>] will provide code completion. Type but do not run
-  \texttt{numpy.arc} followed by a \texttt{<tab>} to have IPython suggest a
-  list of inverse trig functions.
-\item[Control-m h] Provides a list of hotkeys for IPython notebooks. If you
-  spend a lot of time These can
-  really speed up your programming,
+
+  \item[\ipythoninline{help()}] is the native python help command.
+  Type \ipythoninline{help()} into the first cell, and execute with
+  shift-enter.
+  This is a good place to spend time getting familiar with the language, but
+  you can also ask it about specific objects.
+  For example, run \ipythoninline{help(list)} to see some common list
+  manipulations.
+
+  \item[\ipythoninline{?}] is IPython's own help command, and it is often nicer
+  to use than \ipythoninline{help}.
+  Try running \ipythoninline{?} to see an introduction to IPython.
+  Like help you can also ask more specific commands, run
+  \ipythoninline{import numpy; numpy?} to see an overview of the exceptionally
+  useful numpy module.
+  If you need all the gory details of an object, \ipythoninline{numpy??} will
+  give you the source code.
+
+  \item[\textinline{<regex>}\ipythoninline{?}] allows you to use
+  \ipythoninline{?} to search through an object.
+  Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every function in numpy
+  related to $\cos$.
+
+  \item[\ipythoninline{\%quickref}] is a magic function', unique to IPython,
+  that you can use to see a verbatum list of all special IPython commands,
+  including the magic functions.
+
+  \item[\textinline{<tab>}] will provide code completion.
+  Type but do not run \ipythoninline{numpy.arc} followed by a
+  \textinline{<tab>} to have IPython suggest a list of inverse trig functions.
+
+  \item[\textinline{Control-m h}] Provides a list of hotkeys for IPython
+  notebooks.
+  If you spend a lot of time in the notebook, these will speed you up.
+
 \end{description}
 
 \pagebreak
-
-\include{first_example}
-
 \section*{First Steps}
+\input{first_example}
+
+\pagebreak
 
 \section*{Python Gotchas}
 Some of the ways that python makes your life easier can send your program off
@@ -188,33 +195,24 @@ the rails, if you don't understand what the computer is doing.
 
 \newthought{TYPES} still exist in python, even if you can't enforce
 them. Consider the following python code:
-\begin{adjustwidth}{2.5em}{0pt}
-%\begin{lstlisting}[language=Python]
-%In [1]: print 3/2, 3.0/2.0
-%@\hfill \texttt{1 1.5}@
-%\end{lstlisting}
+\begin{adjustwidth}{2.0em}{0pt}
+\input{types}
 \end{adjustwidth}
 
 \noindent
 In the underlying C code, an operation on two integers always returns an
 integer, because floating point\floatNote{} \;math is much slower. In python,
-you can check a type with \pythoninline{type(object)}, and enforce a
-type with \pythoninline{assert} and \pythoninline{isinstance}.
-\begin{adjustwidth}{2.5em}{0pt}
-%\begin{lstlisting}[language=Python]
-%In [2]: print type(3), type(3.0)
-%@\hfill \texttt{<type 'int'> <type 'float'>}@
-%In [3]: assert isinstance(3, int)
-%\end{lstlisting}
+you can check a type with \ipythoninline{type(object)}, and enforce a
+type with \ipythoninline{assert} and \ipythoninline{isinstance}.
+\begin{adjustwidth}{2.0em}{0pt}
+\input{division}
 \end{adjustwidth}
-\pythoninline{assert} will stop the program with an error if the next statement is
+\ipythoninline{assert} will stop the program with an error if the next statement is
 not true. Python 3 is smarter about division, and will return 1.5 for both
 calculations. In the likely event that you cannot use python 3, you can still
 import the behavior by including
-\begin{adjustwidth}{2.5em}{0pt}
-%\begin{lstlisting}[language=Python]
-%from __future__ import division
-%\end{lstlisting}
+\begin{adjustwidth}{2.0em}{0pt}
+\input{future_division}
 \end{adjustwidth}
 at the top of your file or notebook.
 
@@ -244,18 +242,10 @@ object itself.
 \noindent
 Because the first case is common and the second case is expensive, python
 duplicates the reference by default.
-\begin{adjustwidth}{2.5em}{0pt}
-%\begin{lstlisting}[language=Python]
-%In[1]: import numpy as np
-%In[2]: lst1 = np.array([`An Object'],
-%                       dtype=object);
-%       lstcpy = lst1; lst2 = lst1.copy()
-%In[3]: print lst1, lstcpy, lst2
-%@\hfill \texttt{[`An Object'] ['An Object'] ['An Object']}@
-%In[4]: lstcpy[0] = 'A New Object'
-%In[5]: print lst1, lstcpy, lst2
-%@\hfill \texttt{['A New Object'] ['A New Object'] ['An Object']}@ @\nonPrimativeNote@
-%\end{lstlisting}
+
+\smallskip
+\begin{adjustwidth}{2.0em}{0pt}
+  \input{copying}
 \end{adjustwidth}
 
 
@@ -264,15 +254,7 @@ every time you add a cell. This allows you to create confusing code, by removing
 cells or executing them in a strange order.
 
 \begin{adjustwidth}{2.5em}{0pt}
-%\begin{lstlisting}[language=Python]
-%In [3]: message = 'IPython does not have to run
-%          from top to bottom'
-%In [1]: message = 'Good luck debugging this'
-%In [4]: print message
-%  @\hfill \texttt{IPython does not have to run from top to bottom}@
-%In [2]: print message
-%  @\hfill \texttt{Good luck debugging this}@
-%\end{lstlisting}
+\input{notebook_nonlinear}
 \end{adjustwidth}
 
 \noindent
@@ -280,6 +262,8 @@ You can debug this problem by paying attention to the numbers in front of the
 cells. Commands are executed in sequence with their numbers, not their
 position. Try to keep your notebook linear, by not changing cells that have
 already successfully executed.
+
+\pagebreak
 
 \section*{Problems}
 \vspace{-0.5cm}
@@ -329,8 +313,8 @@ already successfully executed.
 
 \item Source control: \href{\hgLink}{Mercurial} and \href{\gitLink}{Git}
 
-\item \href{\lambdaTutorialLink}{Lambda Functions} and
-  \href{\functionalProgrammingLink}{Functional programming}
+%\item \href{\lambdaTutorialLink}{Lambda Functions} and
+%  \href{\functionalProgrammingLink}{Functional programming}
 
 \end{description}
 \end{document}
