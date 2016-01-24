@@ -6,11 +6,20 @@ _minted*
 __pycache__
 
 first_example.tex
+first_example_no_output.tex
 first_example_files
+first_example_no_output_files
 copying.tex
+copying_no_output.tex
 division.tex
+division_no_output.tex
 bin_centers.tex
+bin_centers_no_output.tex
 future_division.tex
+future_division_no_output.tex
 help_commands.tex
+help_commands_no_output.tex
 types.tex
+types_no_output.tex
 notebook_nonlinear.tex
+notebook_nonlinear_no_output.tex
