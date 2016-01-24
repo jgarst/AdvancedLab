@@ -94,39 +94,36 @@ differences between the choices.
 
 \section*{Setup and Startup}
 If you have never set up a programming environment before, the easiest way to
-start is to install \href{\anacondaLink}{Anaconda}, distributed by Continum
-Analytics. This modified python environment will install the most common python
-libraries. It is distributed for free in hopes of later selling packages that
-speed up your python code, but you can simply use it as a convenient
-installation tool. If you want to try a grittier, more controlled installation
-of Python and its many friends, you can schedule some time with
-\href{\email}{Jared}.
+start is to install \href{\anacondaLink}{Anaconda}.
+This modified python environment will install the most common python libraries.
+It is distributed for free in hopes of later selling packages that speed up
+your python code, but you can simply use it as a convenient installation tool.
+If you want to try a grittier, more controlled installation of Python and its
+many friends, you can schedule some time with \href{\email}{Jared}.
 
 \smallskip
 \noindent
 Once you have completed the installation, run \textinline{ipython notebook} in
 the terminal, or the Anaconda IPython Notebook executable.
 A web browser will automatically start with your notebook.
-Managing directories in notebooks is a little clumsy.
+Managing directories in notebooks is clumsy.
 Either make sure to run IPython in the directory you want, or
-\href{\customizeDirectoryLink}{change the default directory} to match your
-workflow.
+\href{\customizeDirectoryLink}{change the default directory}.
 
 \smallskip
 \noindent
 There are a few flavors of help commands available in IPython. Familiarity with
 the options allows you to reference the manuals, or explore specific parts of
-the language.  \marginnote[25pt]{
-\centering{
-  help commands\\}
-\input{help_commands_no_output}
-} \\
+the language.
 
+\marginnote[25pt]{
+\centering{help commands\\}
+\begin{adjustwidth}{3.5em}{0pt}
+    \input{help_commands_no_output}
+\end{adjustwidth}
+}
 
-
-\begin{description}[font=\tt, leftmargin=0cm]
-
-  \item[\ipythoninline{help()}] is the native python help command.
+\newthought{\ipythoninline{help()}} is the native python help command.
   Type \ipythoninline{help()} into the first cell, and execute with
   shift-enter.
   This is a good place to spend time getting familiar with the language, but
@@ -134,7 +131,7 @@ the language.  \marginnote[25pt]{
   For example, run \ipythoninline{help(list)} to see some common list
   manipulations.
 
-  \item[\ipythoninline{?}] is IPython's own help command, and it is often nicer
+\newthought{\ipythoninline{?}} is IPython's own help command, and it is often nicer
   to use than \ipythoninline{help}.
   Try running \ipythoninline{?} to see an introduction to IPython.
   Like help you can also ask more specific commands, run
@@ -143,24 +140,25 @@ the language.  \marginnote[25pt]{
   If you need all the gory details of an object, \ipythoninline{numpy??} will
   give you the source code.
 
-  \item[\textinline{<regex>}\ipythoninline{?}] allows you to use
+\newthought{\textinline{<regex>}\ipythoninline{?}} allows you to use
   \ipythoninline{?} to search through an object.
   Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every
   function in numpy related to $\cos$.
 
-  \item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}] is a magic function', unique to IPython,
-  that you can use to see a verbatum list of all special IPython commands,
-  including the magic functions.
+\newthought{\PY{o}{\PYZpc{}}\ipythoninline{quickref}}
+  is a `magic function', unique to IPython.
+  They are usually used to change the behavior of the notebook
+  --- this one will list of all special IPython commands, including the magic
+  functions.
 
-  \item[\textinline{<tab>}] will provide code completion.
-  Type but do not run \ipythoninline{numpy.arc} followed by a
-  \textinline{<tab>} to have IPython suggest a list of inverse trig functions.
+\newthought{\textinline{<tab>}} will provide code completion.
+  Type \ipythoninline{numpy.arc}\textinline{<tab>} and IPython
+  will suggest a list of inverse trig functions.
 
-  \item[\textinline{Control-m h}] Provides a list of hotkeys for IPython
+\newthought{\textinline{Control-m h}} Provides a list of hotkeys for IPython
   notebooks.
-  If you spend a lot of time in the notebook, these will speed you up.
-
-\end{description}
+  If you spend a lot of time in the notebook, these are worth putting in your
+  fingers.
 
 \pagebreak
 \section*{First Steps}
