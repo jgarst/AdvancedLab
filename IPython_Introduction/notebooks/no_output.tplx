@@ -1,0 +1,14 @@
+((= Notebook input/output style =))
+
+((* set cell_style = 'style_ipython.tplx' *))
+
+((*- extends 'notebooks/hide_warnings.tplx' -*))
+
+
+%===============================================================================
+% Output
+%===============================================================================
+
+% Disable output cells
+((* block output_group *))
+((* endblock output_group *))

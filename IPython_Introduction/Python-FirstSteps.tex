@@ -29,39 +29,16 @@
 \newcommand{\myMarginNote}[3][-9px]{\marginnote{\centering{#2} \\ \vspace{#1}
 \justify{#3}}}
 
-\newcommand{\librariesNote} {\myMarginNote{\href{http://www.scipy.org/index.html}{libraries}}{numpy, scipy,
-      matplotlib, and pandas will help you calculate, reference common
-      functions, plot, and wrangle data. \texttt{\%matplotlib inline} is a
-      `magic function', which tells IPython how to display plots.}}
-
-\newcommand{\cleaningNote} {\myMarginNote{data cleaning}{\texttt{head} and
-    \texttt{tail} return the limits of the pandas dataFrame, and are being used
-    to check that the csv file doesn't have unexpected cruft at the ends. Always
-    check that you are importing your intended data.}}
-
-\newcommand{\formatNote} {\myMarginNote{\texttt{format}}
-     {adds external variables to strings, at specified precision.
-      \texttt{\{0:.2f\}} is replaced by the first float argument of
-      \texttt{format}, rounded to two decimal places.}}
-
-\newcommand{\argumentNote} {\myMarginNote{argument unpacking}
-     {\texttt{function (*iter)} passes the elements of \texttt{itr} to
-      \texttt{function} in order. \texttt{function (**dict)} passes them based
-      on their keys.}}
-
-\newcommand{\nonPrimativeNote} {\myMarginNote[-4px]{two types of variables}
-    {The copying code produces different results when the strings are not
-      wrapped in numpy arrays. Why?}}
-
 \newcommand{\matplotlibGalleryNote}{\footnote{You will need the syntax for
       matplotlib. You can find everything with the help commands, or can get
       syntax and ideas from \href{\matplotlibGalleryLink}{example plots} that
       others have made.}}
 
 \newcommand{\floatNote}{\footnote{ Float stands for floating
-  point number', otherwise known as a decimal number. Though not usually
-  relevant for data analysis, be aware that \texttt{int} and \texttt{float}
-  have detailed differences in precision and speed.}}
+  point number', otherwise known as a decimal number.
+  Though not usually relevant for data analysis, be aware that
+  \ipythoninline{int} and \ipythoninline{float} have detailed differences in
+  precision and speed.}}
 
 \begin{document}
 \maketitle
@@ -127,10 +104,11 @@ of Python and its many friends, you can schedule some time with
 
 \smallskip
 \noindent
-Once you have completed the installation, run \texttt{ipython notebook} in the
-terminal, or the Anaconda IPython Notebook executable. A web browser will
-automatically start with your notebook. Managing directories in notebooks is a
-little clumsy. Either make sure to run IPython in the directory you want, or
+Once you have completed the installation, run \textinline{ipython notebook} in
+the terminal, or the Anaconda IPython Notebook executable.
+A web browser will automatically start with your notebook.
+Managing directories in notebooks is a little clumsy.
+Either make sure to run IPython in the directory you want, or
 \href{\customizeDirectoryLink}{change the default directory} to match your
 workflow.
 
@@ -140,9 +118,11 @@ There are a few flavors of help commands available in IPython. Familiarity with
 the options allows you to reference the manuals, or explore specific parts of
 the language.  \marginnote[25pt]{
 \centering{
-  A quick start: help commands\\}
-\input{help_commands}
+  help commands\\}
+\input{help_commands_no_output}
 } \\
+
+
 
 \begin{description}[font=\tt, leftmargin=0cm]
 
@@ -165,10 +145,10 @@ the language.  \marginnote[25pt]{
 
   \item[\textinline{<regex>}\ipythoninline{?}] allows you to use
   \ipythoninline{?} to search through an object.
-  Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every function in numpy
-  related to $\cos$.
+  Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every
+  function in numpy related to $\cos$.
 
-  \item[\ipythoninline{\%quickref}] is a magic function', unique to IPython,
+  \item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}] is a magic function', unique to IPython,
   that you can use to see a verbatum list of all special IPython commands,
   including the magic functions.
 
@@ -206,9 +186,10 @@ type with \ipythoninline{assert} and \ipythoninline{isinstance}.
 \begin{adjustwidth}{2.0em}{0pt}
 \input{division}
 \end{adjustwidth}
-\ipythoninline{assert} will stop the program with an error if the next statement is
-not true. Python 3 is smarter about division, and will return 1.5 for both
-calculations. In the likely event that you cannot use python 3, you can still
+\ipythoninline{assert} will stop the program with an error if the next
+statement is not true.
+Python 3 is smarter about division, and will return 1.5 for both calculations.
+In the likely event that you cannot use python 3, you can still
 import the behavior by including
 \begin{adjustwidth}{2.0em}{0pt}
 \input{future_division}
@@ -247,7 +228,6 @@ duplicates the reference by default.
   \input{copying}
 \end{adjustwidth}
 
-
 \newthought{THE NOTEBOOK STATE} is changed every time you run a command, not
 every time you add a cell. This allows you to create confusing code, by removing
 cells or executing them in a strange order.
@@ -269,15 +249,18 @@ already successfully executed.
 
 \begin{itemize}
 \item[] \newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
-  Use the help commands to locate the \texttt{scipy.stats} documentation on the
-  Poisson distribution. Is the distribution a function or an object?
-  Plot\matplotlibGalleryNote{} \;the expected number of counts for 10 trials of a
-  poisson process, each with an average of 3 counts per trial.
+  Use the help commands to locate the \ipythoninline{scipy.stats} documentation
+  on the Poisson distribution.
+  Is the distribution a function or an object?
+  Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of
+  a poisson process, each with an average of 3 counts per trial.
 
 \item[] \newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
-  Try calling the poisson distribution function from \texttt{scipy.stats} with
-  no arguments. You will get an error message saying one argument was passed,
-  but two were needed. Use google to explain these strange parameter counts.
+  Try calling the poisson distribution function from
+  \ipythoninline{scipy.stats} with no arguments.
+  You will get an error message saying one argument was passed, but two were
+  needed.
+  Use google to explain these strange parameter counts.
 
 \item[] \newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
   Reproduce the mean, variance, and standard deviation of the data using your
@@ -295,11 +278,13 @@ already successfully executed.
 
 \item[]
 \newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
-  Write a function \texttt{dataAvg(list, n)} that returns a new list
-  $\bar{x}_n$, containing all possible averages of n values from
-  \texttt{list}. Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and
-  $\bar{x}_{100}$. What are the means of these averaged distributions? What are
-  the variances? How do these compare to the mean and variance of $x$?
+  Write a function \ipythoninline{data_avg(list, int)} that returns a new list
+  $\bar{x}_n$, containing all possible averages of n values selected from the
+  list.
+  Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and $\bar{x}_{100}$.
+  What are the means of these averaged distributions?
+  What are the variances?
+  How do these compare to the mean and variance of $x$?
 \end{itemize}
 
 \pagebreak

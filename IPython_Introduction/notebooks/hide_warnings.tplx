@@ -2,7 +2,7 @@
 
 ((* set cell_style = 'style_ipython.tplx' *))
 
-((* extends 'display_priority.tplx' *))
+((*- extends 'display_priority.tplx' -*))
 
 %===============================================================================
 % Input

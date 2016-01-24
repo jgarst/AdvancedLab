@@ -40,15 +40,24 @@ def task_convert_notebook():
             'name': notebook,
             'actions': [['jupyter', 'nbconvert',
                          '--to', 'latex',
-                         # '--ExecutePreprocessor.enabled=True',
                          '--template', 'notebooks/hide_warnings.tplx',
-                         'notebooks/{0}.ipynb'.format(notebook)]],
+                         'notebooks/{0}.ipynb'.format(notebook),
+                         '--output', '{0}.tex'.format(notebook)
+                         ],
 
-            'targets': ['{0}.tex'.format(notebook)],
+                        ['jupyter', 'nbconvert',
+                         '--to', 'latex',
+                         '--template', 'notebooks/no_output.tplx',
+                         'notebooks/{0}.ipynb'.format(notebook),
+                         '--output', '{0}_no_output.tex'.format(notebook)]],
+
+            'targets': ['{0}.tex'.format(notebook),
+                        '{0}_no_output.tex'.format(notebook)],
 
             'file_dep': dependencies,
 
             'clean': [clean_targets,
-                      'rm -rf {0}_files'.format(notebook)]
+                      'rm -rf {0}_files'.format(notebook),
+                      'rm -rf {0}_no_output_files'.format(notebook)]
 
         }
