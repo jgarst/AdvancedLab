@@ -4,3 +4,5 @@ RC_Prelab/MelissinosExercises003.pdf filter=git-crypt diff=git-crypt
 DataAnalysis/MelissinosCH10.pdf filter=git-crypt diff=git-crypt
 PulseNMR/Kittel-CH13-NMR.pdf filter=git-crypt diff=git-crypt
 Dietz_Preston-NMR.djvu filter=git-crypt diff=git-crypt
+
+*.ipynb diff=nb2md
