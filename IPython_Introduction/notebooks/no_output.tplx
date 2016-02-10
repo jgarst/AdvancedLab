@@ -4,6 +4,16 @@
 
 ((*- extends 'notebooks/hide_warnings.tplx' -*))
 
+%===============================================================================
+% Input
+%===============================================================================
+
+((* block input scoped *))
+\begin{Verbatim}[commandchars=\\\{\}]
+((( cell.source | highlight_code(strip_verbatim=True) )))
+\end{Verbatim}
+((* endblock input *))
+
 
 %===============================================================================
 % Output

@@ -34,11 +34,7 @@
       syntax and ideas from \href{\matplotlibGalleryLink}{example plots} that
       others have made.}}
 
-\newcommand{\floatNote}{\footnote{ Float stands for floating
-  point number', otherwise known as a decimal number.
-  Though not usually relevant for data analysis, be aware that
-  \ipythoninline{int} and \ipythoninline{float} have detailed differences in
-  precision and speed.}}
+\newcommand{\floatNote}{}}
 
 \begin{document}
 \maketitle
@@ -118,12 +114,13 @@ the language.
 
 \marginnote[25pt]{
 \centering{help commands\\}
-\begin{adjustwidth}{3.5em}{0pt}
+\begin{adjustwidth}{6.5em}{0pt}
     \input{help_commands}
 \end{adjustwidth}
 }
 
-\newthought{\ipythoninline{help()}} is the native python help command.
+\begin{description}
+\item[\ipythoninline{help()}] is the native python help command.
   Type \ipythoninline{help()} into the first cell, and execute with
   shift-enter.
   This is a good place to spend time getting familiar with the language, but
@@ -131,7 +128,7 @@ the language.
   For example, run \ipythoninline{help(list)} to see some common list
   manipulations.
 
-\newthought{\ipythoninline{?}} is IPython's own help command, and it is often nicer
+\item[\ipythoninline{?}] is IPython's own help command, and it is often nicer
   to use than \ipythoninline{help}.
   Try running \ipythoninline{?} to see an introduction to IPython.
   Like help you can also ask more specific commands, run
@@ -140,25 +137,30 @@ the language.
   If you need all the gory details of an object, \ipythoninline{numpy??} will
   give you the source code.
 
-\newthought{\textinline{<regex>}\ipythoninline{?}} allows you to use
+\item[\textinline{<regex>}\ipythoninline{?}] allows you to use
   \ipythoninline{?} to search through an object.
   Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every
   function in numpy related to $\cos$.
 
-\newthought{\PY{o}{\PYZpc{}}\ipythoninline{quickref}}
+
+
+\item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}]
   is a `magic function', unique to IPython.
   They are usually used to change the behavior of the notebook
   --- this one will list of all special IPython commands, including the magic
   functions.
 
-\newthought{\textinline{<tab>}} will provide code completion.
+\item[\textinline{<tab>}] will provide code completion.
   Type \ipythoninline{numpy.arc}\textinline{<tab>} and IPython
   will suggest a list of inverse trig functions.
 
-\newthought{\textinline{Control-m h}} Provides a list of hotkeys for IPython
+\item[\textinline{Control-m h}] Provides a list of hotkeys for IPython
   notebooks.
   If you spend a lot of time in the notebook, these are worth putting in your
   fingers.
+
+\end{description}
+
 
 \pagebreak
 \section*{First Steps}
@@ -170,40 +172,32 @@ the language.
 Some of the ways that python makes your life easier can send your program off
 the rails, if you don't understand what the computer is doing.
 
-\newthought{TYPES} still exist in python, even if you can't enforce
-them. Consider the following python code:
-\begin{adjustwidth}{2.0em}{0pt}
+
+\marginnote[0pt]{ Float stands for floating
+  point number', otherwise known as a decimal number.
+  Though not usually relevant for data analysis, be aware that
+  \ipythoninline{int} and \ipythoninline{float} have detailed differences in
+  precision and speed.}
+\vspace{5mm}
 \input{types}
-\end{adjustwidth}
 
 \noindent
 In the underlying C code, an operation on two integers always returns an
-integer, because floating point\floatNote{} \;math is much slower. In python,
 you can check a type with \ipythoninline{type(object)}, and enforce a
 type with \ipythoninline{assert} and \ipythoninline{isinstance}.
-\begin{adjustwidth}{2.0em}{0pt}
+
 \input{division}
-\end{adjustwidth}
+
 \ipythoninline{assert} will stop the program with an error if the next
 statement is not true.
 Python 3 is smarter about division, and will return 1.5 for both calculations.
 In the likely event that you cannot use python 3, you can still
 import the behavior by including
-\begin{adjustwidth}{2.0em}{0pt}
+
 \input{future_division}
-\end{adjustwidth}
+
 at the top of your file or notebook.
 
-\newthought{COPYING OBJECTS} can be done in two distinct ways, shown abstractly
-in Figure~\ref*{fig:copy}. The more common method is to copy the object
-reference, so that it can be used in a different part of the code. The second
-method is when you want to have two distinct copies, so that you can have both
-an original version and a modified version. In the first case it is appropriate
-to duplicate the pointer. In the second case it is necessary to duplicate the
-object itself.
-
-
-\smallskip
 \begin{marginfigure}
     \vspace*{\fill}
     \centering
@@ -217,22 +211,16 @@ object itself.
 \label{fig:copy}
 \end{marginfigure}
 
-\noindent
-Because the first case is common and the second case is expensive, python
-duplicates the reference by default.
-
 \smallskip
-\begin{adjustwidth}{2.0em}{0pt}
-  \input{copying}
-\end{adjustwidth}
+\noindent{
+    \input{copying}
+}
 
 \newthought{THE NOTEBOOK STATE} is changed every time you run a command, not
 every time you add a cell. This allows you to create confusing code, by removing
 cells or executing them in a strange order.
 
-\begin{adjustwidth}{2.5em}{0pt}
 \input{notebook_nonlinear}
-\end{adjustwidth}
 
 \noindent
 You can debug this problem by paying attention to the numbers in front of the
@@ -245,22 +233,21 @@ already successfully executed.
 \section*{Problems}
 \vspace{-0.5cm}
 
-\begin{itemize}
-\item[] \newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
+\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
   Use the help commands to locate the \ipythoninline{scipy.stats} documentation
   on the Poisson distribution.
   Is the distribution a function or an object?
   Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of
   a poisson process, each with an average of 3 counts per trial.
 
-\item[] \newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
+\newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
   Try calling the poisson distribution function from
   \ipythoninline{scipy.stats} with no arguments.
   You will get an error message saying one argument was passed, but two were
   needed.
   Use google to explain these strange parameter counts.
 
-\item[] \newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
+\newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
   Reproduce the mean, variance, and standard deviation of the data using your
   own functions.
 
@@ -274,7 +261,6 @@ already successfully executed.
 
 %\item
 
-\item[]
 \newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
   Write a function \ipythoninline{data_avg(list, int)} that returns a new list
   $\bar{x}_n$, containing all possible averages of n values selected from the
@@ -283,7 +269,6 @@ already successfully executed.
   What are the means of these averaged distributions?
   What are the variances?
   How do these compare to the mean and variance of $x$?
-\end{itemize}
 
 \pagebreak
 

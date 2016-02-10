@@ -225,4 +225,8 @@
 
 
 \captionsetup[subfigure]{labelformat=empty, position=top}
-\setlength\parindent{0pt}
+\setlength{\parindent}{0pt}
+
+\newenvironment{absolutelynopagebreak}
+  {\par\nobreak\vfil\penalty0\vfilneg\vtop\bgroup}
+  {\par\xdef\tpd{\the\prevdepth}\egroup\prevdepth=\tpd}
