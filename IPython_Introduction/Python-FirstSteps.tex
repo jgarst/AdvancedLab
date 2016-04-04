@@ -173,11 +173,10 @@ Most languages still do this.
 \input{zero_index.tex}
 
 \begin{marginfigure}
-    \def\svgwidth{150pt}{\input{indexing.pdf_tex}}
+    \def\svgwidth{140pt}{\input{indexing.pdf_tex}}
     \caption{%
     How to count in Python.
-    Shaded elements correspond to those selected by indices [1:4]%
-    }
+    Shaded elements correspond to those selected by indices [1:3]}
 \label{fig:indexing}
 \end{marginfigure}
 
@@ -199,7 +198,8 @@ Because the first case is common and the second case is expensive, Python copies
 
     \subfloat[Case 2]{\scalebox{0.69}{\input{figs/DeepCopy.tikz}}}
     %\subcaption{Case 2}
-  \caption{The finger pointing at the moon is not the moon}
+  \caption{%
+The finger pointing at the moon is not the moon}
 \label{fig:copy}
 \end{marginfigure}
 \input{copying}
@@ -223,7 +223,7 @@ Try to keep your notebook linear, by not changing cells that have already succes
 \input{bin_edges}
 
 \noindent
-It is easy to forget this, and perform model comparisons half the bin width over.
+It is easy to forget this, and have your comparisons  offset by half the bin width.
 
 %\pagebreak
 
