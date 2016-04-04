@@ -71,10 +71,16 @@
 % Display stream ouput with coloring
 ((* block stream *))
     ((*- if not output.name == 'stderr' -*))
-
-        \begin{Verbatim}[commandchars=\\\{\}]
-        ((( output.text | escape_latex | ansi2latex )))
-        \end{Verbatim}
+        ((*- if cell.execution_count is defined -*))
+            ((*- set execution_count = "" ~ (cell.execution_count |
+                                         replace(None, " ")) -*))
+        ((*- else -*))
+            ((*- set execution_count = " " -*))
+        ((*- endif -*))
+        ((*- set indention =  (execution_count | length + 7) -*))
+\begin{Verbatim}[commandchars=\\\{\}]
+((( output.text | escape_latex | ansi2latex | indent(indention, flatten=True) )))
+\end{Verbatim}
     ((*- endif -*))
 ((* endblock stream *))
 

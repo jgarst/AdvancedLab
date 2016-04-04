@@ -39,12 +39,13 @@
 \bigskip
 
 \noindent
-Python is a high level scripting language. While there are many reasons to like
-or dislike Python, we are introducing it to you because it is becoming the
-lingua franca of science\footnote{As an example, the recent LIGO result uses python for the analysis and jupyter notebooks to present the \href{https://losc.ligo.org/s/events/GW150914/GW150914_tutorial.html}{data}.}.
+Python is a high level scripting language.
+While there are many reasons to like or dislike Python, we are introducing it to you because it is becoming the lingua franca of science.
+\footnote{As an example, the recent LIGO result uses python for the analysis and jupyter notebooks to present the \href{https://losc.ligo.org/s/events/GW150914/GW150914_tutorial.html}{data}.}
 This means that increasingly you can expect other people to understand
 your code, and for many of your problems to already be solved and documented in
-Python. Briefly, some exceptional Python features are:
+Python.
+Briefly, some exceptional Python features are:
 
 \begin{description}
 \item[Beautiful Syntax] \hfill \\
@@ -69,46 +70,35 @@ IPython is an interactive version of python, designed for a more exploratory
 approach to programming and analysis.
 \sout{IPython} Jupyter notebooks allow you to quickly visualize your analysis,
 and provide an easy record of your process.
-Like any tools, you can become expert in
-\href{\jupyterInfoLink}{Jupyter notebooks} and
-\href{\ipythonTutorialLink}{IPython} syntax, but you won't need to for this
-course, and we won't cover those skills.
+Like any tools, you can become expert in \href{\jupyterInfoLink}{Jupyter notebooks} and \href{\ipythonTutorialLink}{IPython} syntax, but you won't need to for this course, and we won't cover those skills.
+We are nudging you towards it because it is one of simpelest and most robust ways to analyze data --- but if there is a way that is easier for you, use that instead.
 
 \smallskip
 \noindent
-There are two versions of Python that you will encounter in the wild, Python 2
-and Python 3. Python 3 is a take-no-prisoners reimagining of the the
-language.
-The result is a smoother language, that breaks everything down to the print
-statement in Python 2.
+There are two versions of Python that you will encounter in the wild, Python 2 and Python 3.
+Python 3 is a take-no-prisoners reimagining of the the language.
+The result is a smoother language, that breaks everything down to the print statement in Python 2.
 Most libraries support both Python 2 and 3, but most code is in Python 2.
 This means the appropriate version will depend on how old your project is.
-This introduction will use Python 2 --- but for this course there aren't huge
-differences between the choices.
+This introduction will use Python 3 --- but for this course there aren't huge differences between the choices.
 
 \section*{Setup and Startup}
-If you have never set up a programming environment before, the easiest way to
-start is to install \href{\anacondaLink}{Anaconda}.
+If you have never set up a programming environment before, the easiest way to start is to install \href{\anacondaLink}{Anaconda}.
 This modified python environment will install the most common python libraries.
-It is distributed for free in hopes of later selling packages that speed up
-your python code, but you can simply use it as a convenient installation tool.
-If you want to try a grittier, more controlled installation of Python and its
-many friends, you can schedule some time with \href{\email}{Jared}.
+It is distributed for free in hopes of later selling packages that speed up your python code, but you can simply use it as a convenient installation tool.
+If you want to try a grittier, more controlled installation of Python and its many friends, you can schedule some time with \href{\email}{Jared}.
 
 \smallskip
 \noindent
-Once you have completed the installation, run \textinline{ipython notebook} in
-the terminal, or the Anaconda IPython Notebook executable.
+Once you have completed the installation, run \textinline{ipython notebook} in the terminal, or the Anaconda IPython Notebook executable.
 A web browser will automatically start with your notebook.
 Managing directories in notebooks is clumsy.
-Either make sure to run IPython in the directory you want, or
-\href{\customizeDirectoryLink}{change the default directory}.
+Either make sure to run IPython in the directory you want, or \href{\customizeDirectoryLink}{change the default directory}.
 
 \smallskip
 \noindent
-There are a few flavors of help commands available in IPython. Familiarity with
-the options allows you to reference the manuals, or explore specific parts of
-the language.
+There are a few flavors of help commands available in IPython.
+Familiarity with the options allows you to reference the manuals, or explore specific parts of the language.
 
 \marginnote[25pt]{
 \centering{help commands\\}
@@ -119,43 +109,25 @@ the language.
 
 \begin{description}
 \item[\ipythoninline{help()}] is the native python help command.
-  Type \ipythoninline{help()} into the first cell, and execute with
-  shift-enter.
-  This is a good place to spend time getting familiar with the language, but
-  you can also ask it about specific objects.
-  For example, run \ipythoninline{help(list)} to see some common list
-  manipulations.
+Type \ipythoninline{help()} into the first cell, and execute with shift-enter.
+This is a good place to spend time getting familiar with the language, but you can also ask it about specific objects.
+For example, run \ipythoninline{help(list)} to see some common list manipulations.
 
-\item[\ipythoninline{?}] is IPython's own help command, and it is often nicer
-  to use than \ipythoninline{help}.
-  Try running \ipythoninline{?} to see an introduction to IPython.
-  Like help you can also ask more specific commands, run
-  \ipythoninline{import numpy; numpy?} to see an overview of the exceptionally
-  useful numpy module.
-  If you need all the gory details of an object, \ipythoninline{numpy??} will
-  give you the source code.
+\item[\ipythoninline{?}] is IPython's own help command, and it is often nicer to use than \ipythoninline{help}.
+Try running \ipythoninline{?} to see an introduction to IPython.
+Like help you can also ask more specific commands, run \ipythoninline{import numpy; numpy?} to see an overview of the exceptionally useful numpy module.
+If you need all the gory details of an object, \ipythoninline{numpy??} will give you the source code.
 
-\item[\textinline{<regex>}\ipythoninline{?}] allows you to use
-  \ipythoninline{?} to search through an object.
-  Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every
-  function in numpy related to $\cos$.
+\item[\textinline{<regex>}\ipythoninline{?}] allows you to use \ipythoninline{?} to search through an object.
+Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every function in numpy related to $\cos$.
 
-
-
-\item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}]
-  is a `magic function', unique to IPython.
-  They are usually used to change the behavior of the notebook
-  --- this one will list of all special IPython commands, including the magic
-  functions.
+\item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}] is a `magic function', unique to IPython. They are usually used to change the behavior of the notebook --- this one will list of all special IPython commands, including the magic functions.
 
 \item[\textinline{<tab>}] will provide code completion.
-  Type \ipythoninline{numpy.arc}\textinline{<tab>} and IPython
-  will suggest a list of inverse trig functions.
+Type \ipythoninline{numpy.arc}\textinline{<tab>} and IPython will suggest a list of inverse trig functions.
 
-\item[\textinline{Control-m h}] Provides a list of hotkeys for IPython
-  notebooks.
-  If you spend a lot of time in the notebook, these are worth putting in your
-  fingers.
+\item[\textinline{Control-m h}] Provides a list of hotkeys for IPython notebooks.
+If you spend a lot of time in the notebook, these are worth putting in your fingers.
 
 \end{description}
 
@@ -171,32 +143,54 @@ Some of the ways that python makes your life easier can send your program off
 the rails, if you don't understand what the computer is doing.
 
 
-\marginnote[0pt]{ Float stands for floating
-  point number', otherwise known as a decimal number.
-  Though not usually relevant for data analysis, be aware that
-  \ipythoninline{int} and \ipythoninline{float} have detailed differences in
-  precision and speed.}
+\marginnote[0pt]{%
+Int is an integer, float stand for `floating point number', otherwise known as a decimal number.
+Though not usually relevant for data analysis, be aware that \ipythoninline{int} and \ipythoninline{float} have detailed differences in precision and speed.
+}
 \vspace{5mm}
+
+\newthought{TYPES} still exist in Python, even if you can't enforce them.
+Consider the following Python~2 code:
 \input{types}
+Python~3 is smarter about division, and will return $1.5$ for both calculations, but there are other places where Python will provide identical looking objects with distinct behavior.
 
 \noindent
-In the underlying C code, an operation on two integers always returns an
-you can check a type with \ipythoninline{type(object)}, and enforce a
-type with \ipythoninline{assert} and \ipythoninline{isinstance}.
+In the likely event that you cannot use Python~3, you can still import this behavior by including
 
-\input{division}
+\hspace{25pt}\ipythoninline{from __future__ import division}
 
-\ipythoninline{assert} will stop the program with an error if the next
-statement is not true.
-Python 3 is smarter about division, and will return 1.5 for both calculations.
-In the likely event that you cannot use python 3, you can still
-import the behavior by including
-
-\input{future_division}
-
+\noindent
 at the top of your file or notebook.
 
+\newthought{LISTS} store collections of data
+\input{list.tex}
+
+\noindent
+In early languages, you would access this data by moving to the collection, and reading from the position $(\text{data size}) \times (\text{data index})$.
+Notice that in this scheme, the first element is zero and the last element is one less than the total number of elements.
+Most languages still do this.
+
+\input{zero_index.tex}
+
 \begin{marginfigure}
+    \def\svgwidth{150pt}{\input{indexing.pdf_tex}}
+    \caption{%
+    How to count in Python.
+    Shaded elements correspond to those selected by indices [1:4]%
+    }
+\label{fig:indexing}
+\end{marginfigure}
+
+\noindent
+To keep this straight, it helps to imagine the index as being located immediately before the element, as in Figure~\ref{fig:indexing}.
+
+\smallskip
+
+\newthought{COPYING} can be done in two distinct ways, shown abstractly in Figure~\ref{fig:copy}.
+The first is to create another pointer to the same object, so that it can be used in a different part of the code.
+The second method is to create two distinct copies, so that you can have both an original and modified version.
+Because the first case is common and the second case is expensive, Python copies the pointer by default.
+\begin{marginfigure}[60pt]
     \vspace*{\fill}
     \centering
     \subfloat[Case 1]{\scalebox{1}{\input{figs/ShallowCopy.tikz}}}
@@ -208,75 +202,74 @@ at the top of your file or notebook.
   \caption{The finger pointing at the moon is not the moon}
 \label{fig:copy}
 \end{marginfigure}
+\input{copying}
 
-\smallskip
-\noindent{
-    \input{copying}
-}
 
 \newthought{THE NOTEBOOK STATE} is changed every time you run a command, not
-every time you add a cell. This allows you to create confusing code, by removing
-cells or executing them in a strange order.
+every time you add a cell.
+This allows you to create confusing code, by removing cells or executing them in a strange order.
 
 \input{notebook_nonlinear}
 
 \noindent
-You can debug this problem by paying attention to the numbers in front of the
-cells. Commands are executed in sequence with their numbers, not their
-position. Try to keep your notebook linear, by not changing cells that have
-already successfully executed.
+You can debug this problem by paying attention to the numbers in front of the cells.
+Commands are executed in sequence with their numbers, not their position.
+Try to keep your notebook linear, by not changing cells that have already successfully executed.
 
 \pagebreak
 
-\section*{Problems}
-\vspace{-0.5cm}
+\newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and can sometimes feel like it. One early example of clumsiness is histograms returning bin edges instead of bin centers.
 
-\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
-  Use the help commands to locate the \ipythoninline{scipy.stats} documentation
-  on the Poisson distribution.
-  Is the distribution a function or an object?
-  Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of
-  a poisson process, each with an average of 3 counts per trial.
+\input{bin_edges}
 
-\newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
-  Try calling the poisson distribution function from
-  \ipythoninline{scipy.stats} with no arguments.
-  You will get an error message saying one argument was passed, but two were
-  needed.
-  Use google to explain these strange parameter counts.
+\noindent
+It is easy to forget this, and perform model comparisons half the bin width over.
 
-\newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
-  Reproduce the mean, variance, and standard deviation of the data using your
-  own functions.
+%\pagebreak
 
-  % \item The $\chi^2$ for a frequency distribution is traditionally taken to
-  %   be $$ \mathlarger{\mathlarger{\sum}} \; \frac{\left( \text{observed} -
-  %     \text{expected}\right)^2}{\text{expected}}$$
+%\section*{Problems}
+%\vspace{-0.5cm}
 
-  %   How does this compare to a $\chi^2$ test with the points have errors
-  %   associated with them? \\
-  %   What distribution would you use to make the two equivalent?
+%\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
+%  Use the help commands to locate the \ipythoninline{scipy.stats} documentation on the Poisson distribution.
+%Is the distribution a function or an object?
+%Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of a poisson process, each with an average of 3 counts per trial.
+
+%\newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
+%Try calling the poisson distribution function from \ipythoninline{scipy.stats} with no arguments.
+%You will get an error message saying one argument was passed, but two were needed.
+%Use google to explain these strange parameter counts.
+
+%\newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
+%Reproduce the mean, variance, and standard deviation of the data using your own functions.
+
+% \item The $\chi^2$ for a frequency distribution is traditionally taken to
+%   be $$ \mathlarger{\mathlarger{\sum}} \; \frac{\left( \text{observed} -
+%     \text{expected}\right)^2}{\text{expected}}$$
+%   How does this compare to a $\chi^2$ test with the points have errors
+%   associated with them? \\
+%   What distribution would you use to make the two equivalent?
 
 %\item
 
-\newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
-  Write a function \ipythoninline{data_avg(list, int)} that returns a new list
-  $\bar{x}_n$, containing all possible averages of n values selected from the
-  list.
-  Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and $\bar{x}_{100}$.
-  What are the means of these averaged distributions?
-  What are the variances?
-  How do these compare to the mean and variance of $x$?
+%\newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
+%Write a function \ipythoninline{data_avg(list, int)} that returns a new list $\bar{x}_n$, containing all possible averages of n values selected from the list.
+%Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and $\bar{x}_{100}$.
+%What are the means of these averaged distributions?
+%What are the variances?
+%How do these compare to the mean and variance of $x$?
 
 \pagebreak
 
 \section*{More Reading}
 \begin{description}
-\item \href{\listTutorialLink}{Data Structures and List Maniupulation}
+\item \href{http://learnpythonthehardway.org/book/}{A more comprehensive guide to learning Python.}
 
-\item \href{\pintLink}{Units and Errors}
+\item \href{\listTutorialLink}{Data Structures and List Maniupulation.}
 
-\item Source control: \href{\hgLink}{Mercurial} and \href{\gitLink}{Git}
+\item \href{\pintLink}{Units and Errors.}
+
+\item Source control: \href{\gitLink}{Git} and \href{\hgLink}{Mercurial}.
 
 %\item \href{\lambdaTutorialLink}{Lambda Functions} and
 %  \href{\functionalProgrammingLink}{Functional programming}

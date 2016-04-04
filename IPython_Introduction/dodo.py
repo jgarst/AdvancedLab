@@ -1,3 +1,4 @@
+"""Build a python introduction from code."""
 import os
 import shutil
 from os import path, listdir
@@ -13,6 +14,7 @@ NOTEBOOKS = [path.splitext(notebook)[0]
 
 
 def clean_latex():
+    """Remove Latex cruft."""
     latex_cruft = ['Python-FirstSteps.out',
                    'Python-FirstSteps.fdb_latexmk',
                    'Python-FirstSteps.fls',
@@ -26,11 +28,16 @@ def clean_latex():
         if path.isfile(latex_file):
             os.remove(latex_file)
 
+    for notebook in NOTEBOOKS:
+        if path.isfile(notebook + '.tex'):
+            os.remove(notebook + '.tex')
+
     if path.isdir(minted_dir):
         shutil.rmtree(minted_dir)
 
 
 def clean_python():
+    """Remove python cache."""
     cache_dir = '__pycache__'
 
     if path.isdir(cache_dir):
@@ -38,7 +45,7 @@ def clean_python():
 
 
 def task_python_firststeps():
-    """Creates python firststeps pdf"""
+    """Create python firststeps pdf."""
     return {
             'actions': [['latexmk', '-silent', 'Python-FirstSteps.tex'],
                         ['latexmk', '-c', 'Python-FirstSteps.tex']],
@@ -46,15 +53,28 @@ def task_python_firststeps():
             'file_dep': ['{0}.tex'.format(notebook)
                          for notebook in NOTEBOOKS] +
                          ['Python-FirstSteps.tex',
-                          'tufte-handout-local.tex'],
+                          'tufte-handout-local.tex',
+                          'indexing.pdf_tex',
+                          'indexing.pdf'],
             'clean': [clean_targets,
                       clean_latex]
             }
 
 
-def task_convert_notebook():
-    """Converts ipython notebook to inlineable .tex"""
+def task_convert_svg():
+    """Convert svg to PDF with inkscape."""
+    yield {
+        'name': 'convert_svg',
+        'actions': [['inkscape', '-D', '-z', '--file=figs/indexing.svg',
+                     '--export-pdf=indexing.pdf', '--export-latex']],
+        'targets': ['indexing.pdf', 'indexing.pdf_tex'],
+        'file_dep': ['figs/indexing.svg'],
+        'clean': True
+    }
 
+
+def task_convert_notebook():
+    """Convert ipython notebook to inlineable .tex."""
     yield {
         'name': 'help_commands',
         'actions': [['jupyter', 'nbconvert',

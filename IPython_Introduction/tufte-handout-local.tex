@@ -24,35 +24,54 @@
 \usepackage{minted}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tomorrow
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{current-line}{HTML}{EFEFEF}
+\definecolor{selection}{HTML}{D6D6D6}
+\definecolor{foreground}{HTML}{4D4D4D}
+\definecolor{comment}{HTML}{8E908C}
+\definecolor{red}{HTML}{C82829}
+\definecolor{orange}{HTML}{F5871F}
+\definecolor{yellow}{HTML}{EAB700}
+\definecolor{green}{HTML}{718C00}
+\definecolor{aqua}{HTML}{3E999F}
+\definecolor{blue}{HTML}{4271AE}
+\definecolor{purple}{HTML}{8959A8}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Jupyter Begin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
-    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
-    \definecolor{darkgreen}{rgb}{.12,.54,.11}
-    \definecolor{myteal}{rgb}{.26, .44, .56}
-    \definecolor{gray}{gray}{0.45}
-    \definecolor{lightgray}{gray}{.95}
-    \definecolor{mediumgray}{gray}{.8}
-    \definecolor{inputbackground}{rgb}{.95, .95, .85}
-    \definecolor{outputbackground}{rgb}{.95, .95, .95}
-    \definecolor{traceback}{rgb}{1, .95, .95}
-    % ansi colors
-    \definecolor{red}{rgb}{.6,0,0}
-    \definecolor{green}{rgb}{0,.65,0}
-    \definecolor{brown}{rgb}{0.6,0.6,0}
-    \definecolor{blue}{rgb}{0,.145,.698}
-    \definecolor{purple}{rgb}{.698,.145,.698}
-    \definecolor{cyan}{rgb}{0,.698,.698}
-    \definecolor{lightgray}{gray}{0.5}
-
-    % bright ansi colors
-    \definecolor{darkgray}{gray}{0.25}
-    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
-    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+%    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+%    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+%    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+%    \definecolor{myteal}{rgb}{.26, .44, .56}
+%    \definecolor{gray}{gray}{0.45}
+%    \definecolor{lightgray}{gray}{.95}
+%    \definecolor{mediumgray}{gray}{.8}
+%    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+%    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+%    \definecolor{traceback}{rgb}{1, .95, .95}
+%    % ansi colors
+%    %\definecolor{red}{rgb}{.6,0,0}
+%    \definecolor{red}{HTML}{C82829}
+%    \definecolor{green}{rgb}{0,.65,0}
+%    \definecolor{brown}{rgb}{0.6,0.6,0}
+%    \definecolor{blue}{rgb}{0,.145,.698}
+%    \definecolor{purple}{rgb}{.698,.145,.698}
+%    \definecolor{cyan}{rgb}{0,.698,.698}
+%    \definecolor{lightgray}{gray}{0.5}
+%
+%    % bright ansi colors
+%    \definecolor{darkgray}{gray}{0.25}
+%    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+%    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+%    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+%    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+%    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
     % commands and environments needed by pandoc snippets
     % extracted from the output of `pandoc -s`
@@ -61,13 +80,19 @@
     \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
     % Add ',fontsize=\small' for more characters per line
     \newenvironment{Shaded}{}{}
+    % dark green 007022
     \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    % dark red 8F2100
     \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    % light green 40A170
     \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
     \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
     \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+
+    % blue 4070A1
     \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
     \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+
     \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
     \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
     \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
@@ -105,6 +130,93 @@
 
         % Pygments definitions
 
+%background_color = BACKGROUND
+%    highlight_color = SELECTION
+%
+%    background_color = BACKGROUND
+%    highlight_color = SELECTION
+%
+%    styles = {
+%        # No corresponding class for the following:
+%        Text:                      FOREGROUND,  # class:  ''
+%        Whitespace:                "",          # class: 'w'
+%        Error:                     RED,         # class: 'err'
+%        Other:                     "",          # class 'x'
+%
+%        Comment:                   COMMENT,   # class: 'c'
+%        Comment.Multiline:         "",        # class: 'cm'
+%        Comment.Preproc:           "",        # class: 'cp'
+%        Comment.Single:            "",        # class: 'c1'
+%        Comment.Special:           "",        # class: 'cs'
+%
+%        Keyword:                   PURPLE,    # class: 'k'
+%        Keyword.Constant:          "",        # class: 'kc'
+%        Keyword.Declaration:       "",        # class: 'kd'
+%        Keyword.Namespace:         AQUA,      # class: 'kn'
+%        Keyword.Pseudo:            "",        # class: 'kp'
+%        Keyword.Reserved:          "",        # class: 'kr'
+%        Keyword.Type:              YELLOW,    # class: 'kt'
+%
+%        Operator:                  AQUA,      # class: 'o'
+%        Operator.Word:             "",        # class: 'ow' - like keywords
+%
+%        Punctuation:               FOREGROUND,  # class: 'p'
+%
+%        Name:                      FOREGROUND,  # class: 'n'
+%        Name.Attribute:            BLUE,        # class: 'na' - to be revised
+%        Name.Builtin:              "",          # class: 'nb'
+%        Name.Builtin.Pseudo:       "",          # class: 'bp'
+%        Name.Class:                YELLOW,      # class: 'nc' - to be revised
+%        Name.Constant:             RED,         # class: 'no' - to be revised
+%        Name.Decorator:            AQUA,        # class: 'nd' - to be revised
+%        Name.Entity:               "",          # class: 'ni'
+%        Name.Function:             BLUE,        # class: 'nf'
+%        Name.Property:             "",          # class: 'py'
+%        Name.Label:                "",          # class: 'nl'
+%        Name.Namespace:            YELLOW,      # class: 'nn' - to be revised
+%        Name.Other:                BLUE,        # class: 'nx'
+%        Name.Tag:                  AQUA,        # class: 'nt' - like a keyword
+%        Name.Variable:             RED,         # class: 'nv' - to be revised
+%        Name.Variable.Class:       "",          # class: 'vc' - to be revised
+%        Name.Variable.Global:      "",          # class: 'vg' - to be revised
+%        Name.Variable.Instance:    "",          # class: 'vi' - to be revised
+%
+%        Number:                    ORANGE,    # class: 'm'
+%        Number.Float:              "",        # class: 'mf'
+%        Number.Hex:                "",        # class: 'mh'
+%        Number.Integer:            "",        # class: 'mi'
+%        Number.Integer.Long:       "",        # class: 'il'
+%        Number.Oct:                "",        # class: 'mo'
+%
+%        Literal:                   ORANGE,    # class: 'l'
+%        Literal.Date:              GREEN,     # class: 'ld'
+%
+%        String:                    GREEN,       # class: 's'
+%        String.Backtick:           "",          # class: 'sb'
+%        String.Char:               FOREGROUND,  # class: 'sc'
+%        String.Doc:                COMMENT,     # class: 'sd' - like a comment
+%        String.Double:             "",          # class: 's2'
+%        String.Escape:             ORANGE,      # class: 'se'
+%        String.Heredoc:            "",          # class: 'sh'
+%        String.Interpol:           ORANGE,      # class: 'si'
+%        String.Other:              "",          # class: 'sx'
+%        String.Regex:              "",          # class: 'sr'
+%        String.Single:             "",          # class: 's1'
+%        String.Symbol:             "",          # class: 'ss'
+%
+%        Generic:                   "",                    # class: 'g'
+%        Generic.Deleted:           RED,                   # class: 'gd',
+%        Generic.Emph:              "italic",              # class: 'ge'
+%        Generic.Error:             "",                    # class: 'gr'
+%        Generic.Heading:           "bold " + FOREGROUND,  # class: 'gh'
+%        Generic.Inserted:          GREEN,                 # class: 'gi'
+%        Generic.Output:            "",                    # class: 'go'
+%        Generic.Prompt:            "bold " + COMMENT,     # class: 'gp'
+%        Generic.Strong:            "bold",                # class: 'gs'
+%        Generic.Subheading:        "bold " + AQUA,        # class: 'gu'
+%        Generic.Traceback:         "",                    # class: 'gt'
+%    }
+
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
     \let\PY@ul=\relax \let\PY@tc=\relax%
@@ -116,6 +228,7 @@
     \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
 \def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
 
+% Name.Exception:            RED,         # class: 'ne'
 \expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
 \expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
 \expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
@@ -199,10 +312,9 @@
 \def\PYZrb{]}
 \makeatother
 
-
-    % Exact colors from NB
-    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
-    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+% Exact colors from NB
+\definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+\definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Jupyter end
@@ -212,8 +324,8 @@
             pdfborder = {0 0 0},
             bookmarksdepth = section,
             citecolor = DarkGreen,
-            linkcolor = DarkBlue,
-            urlcolor = DarkGreen,}
+            linkcolor = violet,
+            urlcolor = violet,}
 
 %\usemintedstyle{notebook}
 
