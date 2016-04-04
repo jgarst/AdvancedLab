@@ -54,8 +54,9 @@ def task_python_firststeps():
                          for notebook in NOTEBOOKS] +
                          ['Python-FirstSteps.tex',
                           'tufte-handout-local.tex',
-                          'indexing.pdf_tex',
-                          'indexing.pdf'],
+                          'indexing.pdf', 'indexing.pdf_tex',
+                          'shallow_copy.pdf', 'shallow_copy.pdf_tex',
+                          'deep_copy.pdf', 'deep_copy.pdf_tex'],
             'clean': [clean_targets,
                       clean_latex]
             }
@@ -63,14 +64,24 @@ def task_python_firststeps():
 
 def task_convert_svg():
     """Convert svg to PDF with inkscape."""
-    yield {
-        'name': 'convert_svg',
-        'actions': [['inkscape', '-D', '-z', '--file=figs/indexing.svg',
-                     '--export-pdf=indexing.pdf', '--export-latex']],
-        'targets': ['indexing.pdf', 'indexing.pdf_tex'],
-        'file_dep': ['figs/indexing.svg'],
-        'clean': True
-    }
+    svgs = [{'name': 'indexing',
+             'file': 'figs/indexing.svg',
+             'pdf': 'indexing.pdf'},
+            {'name': 'shallow_copy',
+             'file': 'figs/shallow_copy.svg',
+             'pdf': 'shallow_copy.pdf'},
+            {'name': 'deep_copy',
+             'file': 'figs/deep_copy.svg',
+             'pdf': 'deep_copy.pdf'}]
+    for svg in svgs:
+        yield {
+            'name': 'convert ' + svg['name'],
+            'actions': [['inkscape', '-D', '-z', '--file=' + svg['file'],
+                         '--export-pdf=' + svg['pdf'], '--export-latex']],
+            'targets': [svg['pdf'], svg['pdf'] + '_tex'],
+            'file_dep': [svg['file']],
+            'clean': True
+            }
 
 
 def task_convert_notebook():

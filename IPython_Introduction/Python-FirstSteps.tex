@@ -186,18 +186,18 @@ To keep this straight, it helps to imagine the index as being located immediatel
 \smallskip
 
 \newthought{COPYING} can be done in two distinct ways, shown abstractly in Figure~\ref{fig:copy}.
-The first is to create another pointer to the same object, so that it can be used in a different part of the code.
-The second method is to create two distinct copies, so that you can have both an original and modified version.
+A shallow copy will create another pointer to the same object, so that it can be used in a different part of the code.
+A deep copy will create two distinct objects, so that you can have both an original and modified version.
 Because the first case is common and the second case is expensive, Python copies the pointer by default.
-\begin{marginfigure}[60pt]
+\begin{marginfigure}
     \vspace*{\fill}
     \centering
-    \subfloat[Case 1]{\scalebox{1}{\input{figs/ShallowCopy.tikz}}}
 
-    \vfill
+    \def\svgwidth{75pt}\input{shallow_copy.pdf_tex}
 
-    \subfloat[Case 2]{\scalebox{0.69}{\input{figs/DeepCopy.tikz}}}
-    %\subcaption{Case 2}
+    \vspace*{\fill}
+    \bigskip
+    \def\svgwidth{140pt}\input{deep_copy.pdf_tex}
   \caption{%
 The finger pointing at the moon is not the moon}
 \label{fig:copy}
