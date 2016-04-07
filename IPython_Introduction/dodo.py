@@ -12,6 +12,8 @@ NOTEBOOKS = [path.splitext(notebook)[0]
              for notebook in listdir('notebooks')
              if notebook[-6:] == '.ipynb']
 
+SVG = [path.splitext(svg)[0] for svg in listdir('figs') if svg[-4:] == '.svg']
+
 
 def clean_latex():
     """Remove Latex cruft."""
@@ -56,7 +58,11 @@ def task_python_firststeps():
                           'tufte-handout-local.tex',
                           'indexing.pdf', 'indexing.pdf_tex',
                           'shallow_copy.pdf', 'shallow_copy.pdf_tex',
-                          'deep_copy.pdf', 'deep_copy.pdf_tex'],
+                          'deep_copy.pdf', 'deep_copy.pdf_tex',
+                          'matplotlib_default.pdf',
+                          'matplotlib_default.pdf_tex',
+                          'matplotlib_seaborn.pdf',
+                          'matplotlib_seaborn.pdf_tex'],
             'clean': [clean_targets,
                       clean_latex]
             }
@@ -64,22 +70,13 @@ def task_python_firststeps():
 
 def task_convert_svg():
     """Convert svg to PDF with inkscape."""
-    svgs = [{'name': 'indexing',
-             'file': 'figs/indexing.svg',
-             'pdf': 'indexing.pdf'},
-            {'name': 'shallow_copy',
-             'file': 'figs/shallow_copy.svg',
-             'pdf': 'shallow_copy.pdf'},
-            {'name': 'deep_copy',
-             'file': 'figs/deep_copy.svg',
-             'pdf': 'deep_copy.pdf'}]
-    for svg in svgs:
+    for svg in SVG:
         yield {
-            'name': 'convert ' + svg['name'],
-            'actions': [['inkscape', '-D', '-z', '--file=' + svg['file'],
-                         '--export-pdf=' + svg['pdf'], '--export-latex']],
-            'targets': [svg['pdf'], svg['pdf'] + '_tex'],
-            'file_dep': [svg['file']],
+            'name': 'convert ' + svg,
+            'actions': [['inkscape', '-D', '-z', '--file=figs/' + svg + '.svg',
+                         '--export-pdf=' + svg + '.pdf', '--export-latex']],
+            'targets': [svg + '.pdf', svg + '.pdf_tex'],
+            'file_dep': ['figs/' + svg + '.svg'],
             'clean': True
             }
 
