@@ -131,5 +131,4 @@ def task_convert_notebook():
                       clean_python,
                       'rm -rf {0}_files'.format(notebook),
                       'rm -rf {0}_no_output_files'.format(notebook)]
-
         }

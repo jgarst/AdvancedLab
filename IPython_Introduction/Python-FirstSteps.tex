@@ -57,7 +57,7 @@ Briefly, some exceptional Python features are:
 \item[No Types] \hfill \\
   There is no easy way to specify how code will operate on your data.
 \item[Program Control Through Indentation] \hfill \\
-  Other languages use curly brackets \ipythoninline{{}} to determine program
+  Other languages use curly brackets \pythoninline{{}} to determine program
   flow, and tabs by convention for readability.
   Python conflates the two.
 \item[Batteries Included] \hfill \\
@@ -107,23 +107,23 @@ Familiarity with the options allows you to reference the manuals, or explore spe
 }
 
 \begin{description}
-\item[\ipythoninline{help()}] is the native python help command.
-Type \ipythoninline{help()} into the first cell, and execute with shift-enter.
+\item[\pythoninline{help()}] is the native python help command.
+Type \pythoninline{help()} into the first cell, and execute with shift-enter.
 This is a good place to spend time getting familiar with the language, but you can also ask it about specific objects.
-For example, run \ipythoninline{help(list)} to see some common list manipulations.
+For example, run \pythoninline{help(list)} to see some common list manipulations.
 
-\item[\ipythoninline{?}] is IPython's own help command, and it is often nicer to use than \ipythoninline{help}.
-Try running \ipythoninline{?} to see an introduction to IPython.
-Like help you can also ask more specific commands, run \ipythoninline{import numpy; numpy?} to see an overview of the exceptionally useful numpy module.
-If you need all the gory details of an object, \ipythoninline{numpy??} will give you the source code.
+\item[\textinline{?}] is IPython's own help command, and it is often nicer to use than \pythoninline{help}.
+Try running \textinline{?} to see an introduction to IPython.
+Like help you can also ask more specific commands, run \pythoninline{import numpy; numpy}\textinline{?} to see an overview of the exceptionally useful numpy module.
+If you need all the gory details of an object, \pythoninline{numpy}\textinline{??} will give you the source code.
 
-\item[\textinline{<regex>}\ipythoninline{?}] allows you to use \ipythoninline{?} to search through an object.
-Try running \ipythoninline{numpy.*cos*}\ipythoninline{?} to see every function in numpy related to $\cos$.
+\item[\textinline{<regex>}\textinline{?}] allows you to use \textinline{?} to search through an object.
+Try running \pythoninline{numpy.*cos*}\textinline{?} to see every function in numpy related to $\cos$.
 
-\item[\PY{o}{\PYZpc{}}\ipythoninline{quickref}] is a `magic function', unique to IPython. They are usually used to change the behavior of the notebook --- this one will list of all special IPython commands, including the magic functions.
+\item[\PY{o}{\PYZpc{}}\pythoninline{quickref}] is a `magic function', unique to IPython. They are usually used to change the behavior of the notebook --- this one will list of all special IPython commands, including the magic functions.
 
 \item[\textinline{<tab>}] will provide code completion.
-Type \ipythoninline{numpy.arc}\textinline{<tab>} and IPython will suggest a list of inverse trig functions.
+Type \pythoninline{numpy.arc}\textinline{<tab>} and IPython will suggest a list of inverse trig functions.
 
 \item[\textinline{Control-m h}] Provides a list of hotkeys for IPython notebooks.
 If you spend a lot of time in the notebook, these are worth putting in your fingers.
@@ -144,7 +144,7 @@ the rails, if you don't understand what the computer is doing.
 
 \marginnote[0pt]{%
 Int is an integer, float stand for `floating point number', otherwise known as a decimal number.
-Though not usually relevant for data analysis, be aware that \ipythoninline{int} and \ipythoninline{float} have detailed differences in precision and speed.
+Though not usually relevant for data analysis, be aware that \pythoninline{int} and \pythoninline{float} have detailed differences in precision and speed.
 }
 \vspace{5mm}
 
@@ -156,7 +156,7 @@ Python~3 is smarter about division, and will return $1.5$ for both calculations,
 \noindent
 In the likely event that you cannot use Python~3, you can still import this behavior by including
 
-\hspace{25pt}\ipythoninline{from __future__ import division}
+\hspace{25pt}\pythoninline{from __future__ import division}
 
 \noindent
 at the top of your file or notebook.
@@ -216,7 +216,7 @@ Commands are executed in sequence with their numbers, not their position.
 Try to keep your notebook linear, by not changing cells that have already successfully executed.
 
 \pagebreak
-\begin{marginfigure}[30pt]
+\begin{marginfigure}
     \vspace*{\fill}
     \centering
 
@@ -226,60 +226,55 @@ Try to keep your notebook linear, by not changing cells that have already succes
     \bigskip
     \def\svgwidth{140pt}\input{matplotlib_seaborn.pdf_tex}
   \caption{Matplotlib versus seaborn.
-  \hspace{\textwidth}Remember to \ipythoninline{import seaborn as sns}.}
+  \hspace{\textwidth}Remember to \pythoninline{import seaborn as sns}.}
 \label{fig:seaborn}
 \end{marginfigure}
 
-\newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and can sometimes feel like it. One early example of clumsiness is histograms returning bin edges instead of bin centers.
+\newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and sometimes feels like it. \href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn} will make your plots prettier, but the code can still be clumsy. Seaborn is demonstrated in Figure~\ref{fig:seaborn}.
+
+\noindent
+One early example of clumsiness: histograms return bin edges, not bin centers.
+It is easy to forget this, which adds an offset to your analysis.
 
 \input{bin_edges}
 
-\noindent
-It is easy to forget this, and have your comparisons  offset by half the bin width.
-
-\noindent
-\href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn} provides smarter default aesthetic choices.
-See Figure~\ref{fig:seaborn} for the difference.
-
 \newthought{FINITE PRECISION.}
 There are infinite numbers between 0 and 1, but a finite amount of space on your computer.
-That means you won't be able to any real number.
-This can lead to some surprising results.
+That means you can't represent any real number, with some surprising results.
 
 \marginnote[30pt]{You can't have everything.
 Where would you put it?}
 \input{finite_precision.tex}
 
 \noindent
-If you are not doing gritty numerical work, the real problem with this is in comparisons.
+This is a real problem for comparisons.
 The loop
-\begin{minted}{python}
-        sum = 0
-        while sum != 1:
-            sum += 0.1
-\end{minted}
+\begin{pythoncode}
+        float_sum = 0
+        while float_sum != 1:
+            float_sum += 0.1
+\end{pythoncode}
 
 \noindent
-will run forever
+will run forever.
 
-\begin{centering}
-\begin{figure*}
+\begin{figure}[hb]
+\small
 $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: \underbrace{1001100110011001100110011001100110011001100110011010}_{\text{decimal}}$$
 \caption{Binary representation of $0.1$. Note that $0.1$ is a repeating decimal in binary, so we will never be able to represent it precisely.}
-\end{figure*}
-\end{centering}
+\end{figure}
 %\pagebreak
 
 %\section*{Problems}
 %\vspace{-0.5cm}
 
 %\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
-%  Use the help commands to locate the \ipythoninline{scipy.stats} documentation on the Poisson distribution.
+%  Use the help commands to locate the \pythoninline{scipy.stats} documentation on the Poisson distribution.
 %Is the distribution a function or an object?
 %Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of a poisson process, each with an average of 3 counts per trial.
 
 %\newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
-%Try calling the poisson distribution function from \ipythoninline{scipy.stats} with no arguments.
+%Try calling the poisson distribution function from \pythoninline{scipy.stats} with no arguments.
 %You will get an error message saying one argument was passed, but two were needed.
 %Use google to explain these strange parameter counts.
 
@@ -296,7 +291,7 @@ $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: 
 %\item
 
 %\newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
-%Write a function \ipythoninline{data_avg(list, int)} that returns a new list $\bar{x}_n$, containing all possible averages of n values selected from the list.
+%Write a function \pythoninline{data_avg(list, int)} that returns a new list $\bar{x}_n$, containing all possible averages of n values selected from the list.
 %Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and $\bar{x}_{100}$.
 %What are the means of these averaged distributions?
 %What are the variances?
