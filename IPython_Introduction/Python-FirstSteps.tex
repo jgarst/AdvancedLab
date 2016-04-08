@@ -41,7 +41,7 @@
 \noindent
 Python is a high level scripting language.
 While there are many reasons to like or dislike Python, we are introducing it to you because it is becoming the lingua franca of science.
-\footnote{As an example, the recent LIGO result uses python for the analysis and jupyter notebooks to present the \href{https://losc.ligo.org/s/events/GW150914/GW150914_tutorial.html}{data}.}
+\footnote{As an example, the recent LIGO result uses python for the analysis and Jupyter notebooks to present the \href{https://losc.ligo.org/s/events/GW150914/GW150914_tutorial.html}{data}.}
 This means that increasingly you can expect other people to understand
 your code, and for many of your problems to already be solved and documented in
 Python.
@@ -53,7 +53,7 @@ Briefly, some exceptional Python features are:
   code.
 \item[Interpreted] \hfill \\
   The code you write is the code that runs. Nothing will be changed, nothing
-  will be checked, nothing will be optimised.
+  will be checked, nothing will be optimized.
 \item[No Types] \hfill \\
   There is no easy way to specify how code will operate on your data.
 \item[Program Control Through Indentation] \hfill \\
@@ -216,6 +216,19 @@ Commands are executed in sequence with their numbers, not their position.
 Try to keep your notebook linear, by not changing cells that have already successfully executed.
 
 \pagebreak
+\begin{marginfigure}[30pt]
+    \vspace*{\fill}
+    \centering
+
+    \def\svgwidth{140pt}\input{matplotlib_default.pdf_tex}
+
+    \vspace*{\fill}
+    \bigskip
+    \def\svgwidth{140pt}\input{matplotlib_seaborn.pdf_tex}
+  \caption{Matplotlib versus seaborn.
+  \hspace{\textwidth}Remember to \ipythoninline{import seaborn as sns}.}
+\label{fig:seaborn}
+\end{marginfigure}
 
 \newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and can sometimes feel like it. One early example of clumsiness is histograms returning bin edges instead of bin centers.
 
@@ -224,9 +237,13 @@ Try to keep your notebook linear, by not changing cells that have already succes
 \noindent
 It is easy to forget this, and have your comparisons  offset by half the bin width.
 
+\noindent
+\href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn} provides smarter default aesthetic choices.
+See Figure~\ref{fig:seaborn} for the difference.
+
 \newthought{FINITE PRECISION.}
-There are infinite numbers between 0 and 1.
-That means you can't represent any real number in a finite amount of space.
+There are infinite numbers between 0 and 1, but a finite amount of space on your computer.
+That means you won't be able to any real number.
 This can lead to some surprising results.
 
 \marginnote[30pt]{You can't have everything.
@@ -234,7 +251,7 @@ Where would you put it?}
 \input{finite_precision.tex}
 
 \noindent
-If you are not doing gritty numerical work, the real problem with this is in comparissons.
+If you are not doing gritty numerical work, the real problem with this is in comparisons.
 The loop
 \begin{minted}{python}
         sum = 0
@@ -291,7 +308,7 @@ $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: 
 \begin{description}
 \item \href{http://learnpythonthehardway.org/book/}{A more comprehensive guide to learning Python.}
 
-\item \href{\listTutorialLink}{Data Structures and List Maniupulation.}
+\item \href{\listTutorialLink}{Data Structures and List Manipulation.}
 
 \item \href{\pintLink}{Units and Errors.}
 
