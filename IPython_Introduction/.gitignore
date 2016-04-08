@@ -4,6 +4,8 @@ _minted*
 .doit.db
 __pycache__
 
+first_example_files
+
 first_example.tex
 bin_edges.tex
 finite_precision.tex
