@@ -22,7 +22,8 @@ def clean_latex():
                    'Python-FirstSteps.fls',
                    'Python-FirstSteps.log',
                    'Python-FirstSteps.pyg',
-                   'Python-FirstSteps.aux']
+                   'Python-FirstSteps.aux',
+                   'Python-FirstSteps.synctex.gz']
 
     minted_dir = '_minted-Python-FirstSteps'
 
@@ -64,7 +65,8 @@ def task_python_firststeps():
                           'matplotlib_seaborn.pdf',
                           'matplotlib_seaborn.pdf_tex'],
             'clean': [clean_targets,
-                      clean_latex]
+                      clean_latex,
+                      clean_python]
             }
 
 
