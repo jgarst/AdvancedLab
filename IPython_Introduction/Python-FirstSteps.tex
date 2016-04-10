@@ -4,6 +4,8 @@
 \author{Jared Garst}
 \date{\today} % remove title space
 
+\usepackage{siunitx}
+
 \newcommand{\ipythonTutorialLink}
   {http://ipython.readthedocs.org/en/stable/interactive/index.html}
 \newcommand{\jupyterInfoLink}
@@ -263,10 +265,28 @@ will run forever.
 $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: \underbrace{1001100110011001100110011001100110011001100110011010}_{\text{decimal}}$$
 \caption{Binary representation of $0.1$. Note that $0.1$ is a repeating decimal in binary, so we will never be able to represent it precisely.}
 \end{figure}
-%\pagebreak
+\pagebreak
 
-%\section*{Problems}
-%\vspace{-0.5cm}
+\section*{Problems}
+
+\newthought{DEAD TIME SIMULATION}
+
+\noindent
+Check your result on the dead time problem in the data analysis by simulating a poisson process. Divide a period of at least \SI{20}{\micro\second} into bins of \SI{1}{\nano\second}, each of which with either one or zero photons, using
+\begin{pythoncode}
+        np.random.choice([0, 1], num_bins, p=[prob_1, prob_2])
+\end{pythoncode}
+to generate the data, and a loop
+\begin{pythoncode}
+        for photon_index in np.nonzero(bins)[0]:
+            bins[dead_time_start:dead_time_end] = 0
+\end{pythoncode}
+to drop the counts that fall in the dead time.
+
+\noindent
+What is the efficiency of this detector?
+What is the error on your answer?
+What forms of systematic error are in this simulation?
 
 %\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
 %  Use the help commands to locate the \pythoninline{scipy.stats} documentation on the Poisson distribution.
