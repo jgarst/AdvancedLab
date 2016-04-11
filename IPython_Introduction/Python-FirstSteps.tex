@@ -272,7 +272,8 @@ $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: 
 \newthought{DEAD TIME SIMULATION}
 
 \noindent
-Check your result on the dead time problem in the data analysis by simulating a poisson process. Divide a period of at least \SI{20}{\micro\second} into bins of \SI{1}{\nano\second}, each of which with either one or zero photons, using
+Check your result on the dead time problem in the data analysis by simulating a poisson process.
+Divide a period of at least \SI{20}{\micro\second} into bins of \SI{1}{\nano\second}, each of which with either one or zero photons, using
 \begin{pythoncode}
         np.random.choice([0, 1], num_bins, p=[prob_1, prob_2])
 \end{pythoncode}
@@ -288,34 +289,12 @@ What is the efficiency of this detector?
 What is the error on your answer?
 What forms of systematic error are in this simulation?
 
-%\newthought{{\Large 1} \hspace{0.25em} DOCUMENTATION FROM PYTHON} \\
-%  Use the help commands to locate the \pythoninline{scipy.stats} documentation on the Poisson distribution.
-%Is the distribution a function or an object?
-%Plot\matplotlibGalleryNote{} the expected number of counts for 10 trials of a poisson process, each with an average of 3 counts per trial.
-
-%\newthought{{\Large 2} \hspace{0.25em} DOCUMENTATION FROM GOOGLE} \\
-%Try calling the poisson distribution function from \pythoninline{scipy.stats} with no arguments.
-%You will get an error message saying one argument was passed, but two were needed.
-%Use google to explain these strange parameter counts.
-
-%\newthought{{\Large 3} \hspace{0.25em} USING PYTHON TO CALCULATE} \\
-%Reproduce the mean, variance, and standard deviation of the data using your own functions.
-
-% \item The $\chi^2$ for a frequency distribution is traditionally taken to
-%   be $$ \mathlarger{\mathlarger{\sum}} \; \frac{\left( \text{observed} -
-%     \text{expected}\right)^2}{\text{expected}}$$
-%   How does this compare to a $\chi^2$ test with the points have errors
-%   associated with them? \\
-%   What distribution would you use to make the two equivalent?
-
-%\item
-
-%\newthought{{\Large 4} \hspace{0.25em} OBSERVE THE CENTRAL LIMIT THEOREM} \\
-%Write a function \pythoninline{data_avg(list, int)} that returns a new list $\bar{x}_n$, containing all possible averages of n values selected from the list.
-%Use this to plot $\bar{x}_2$, $\bar{x}_{10}$ and $\bar{x}_{100}$.
-%What are the means of these averaged distributions?
-%What are the variances?
-%How do these compare to the mean and variance of $x$?
+\newthought{CENTRAL LIMIT THEOREM} \\
+Plot a histogram of 10000 means, each averaging 10 numbers ranging from -0.5 to 0.5.
+Generate a gaussian function with the same standard deviation, and plot the difference $(\text{y} - \text{gauss})$ and ratio $(\text{gauss} / \text{y})$.
+Where is the absolute difference the greatest?
+Where is the relative difference the greatest?
+Describe the nature of the convergence in the center versus the tail of the distribution.
 
 \pagebreak
 
