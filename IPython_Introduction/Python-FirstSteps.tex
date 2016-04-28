@@ -143,35 +143,8 @@ If you spend a lot of time in the notebook, these are worth putting in your fing
 Some of the ways that python makes your life easier can send your program off
 the rails, if you don't understand what the computer is doing.
 
-
-\marginnote[0pt]{%
-Int is an integer, float stand for `floating point number', otherwise known as a decimal number.
-Though not usually relevant for data analysis, be aware that \pythoninline{int} and \pythoninline{float} have detailed differences in precision and speed.
-}
-\vspace{5mm}
-
-\newthought{TYPES} still exist in Python, even if you can't enforce them.
-Consider the following Python~2 code:
-\input{types}
-Python~3 is smarter about division, and will return $1.5$ for both calculations, but there are other places where Python will provide identical looking objects with distinct behavior.
-
-\noindent
-In the likely event that you cannot use Python~3, you can still import this behavior by including
-
-\hspace{25pt}\pythoninline{from __future__ import division}
-
-\noindent
-at the top of your file or notebook.
-
-\newthought{LISTS} store collections of data
+\newthought{ZERO INDEXING} can lead you to be off by one in your lists.
 \input{list.tex}
-
-\noindent
-In early languages, you would access this data by moving to the collection, and reading from the position $(\text{data size}) \times (\text{data index})$.
-Notice that in this scheme, the first element is zero and the last element is one less than the total number of elements.
-Most languages still do this.
-
-\input{zero_index.tex}
 
 \begin{marginfigure}
     \def\svgwidth{140pt}{\input{indexing.pdf_tex}}
@@ -182,15 +155,66 @@ Most languages still do this.
 \end{marginfigure}
 
 \noindent
+In early languages, you would access this data by moving to the collection, and reading from the position $(\text{data size}) \times (\text{data index})$.
+Notice that in this scheme, the first element is zero and the last element is one less than the total number of elements.
+Most languages still do this.
+
+\input{zero_index.tex}
+
+\noindent
 To keep this straight, it helps to imagine the index as being located immediately before the element, as in Figure~\ref{fig:indexing}.
 
 \smallskip
+
+\newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and sometimes feels like it. \href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn}, shown in Figure~\ref{fig:seaborn}, will make prettier plots.
+Get it with \textinline{conda install seaborn} on the command line, though this won't make your code any less ugly.
+
+\noindent
+One early example of clumsiness: histograms return bin edges, not bin centers.
+It is easy to forget this, and add an offset to your analysis.
+
+\begin{marginfigure}
+    \vspace*{\fill}
+    \centering
+
+    \def\svgwidth{140pt}\input{matplotlib_default.pdf_tex}
+
+    \vspace*{\fill}
+    \bigskip
+    \def\svgwidth{140pt}\input{matplotlib_seaborn.pdf_tex}
+  \caption{Matplotlib versus seaborn.
+  \hspace{\textwidth}Remember to \pythoninline{import seaborn as sns}}
+\label{fig:seaborn}
+\end{marginfigure}
+
+\input{bin_edges}
+
+\vspace{5mm}
+\newthought{TYPES} still exist in Python, even if you can't enforce them.
+Consider the following Python~2 code:
+\input{types}
+\marginnote[0pt]{%
+Int is an integer, float stand for `floating point number', otherwise known as a decimal number.
+Though not usually relevant for data analysis, be aware that \pythoninline{int} and \pythoninline{float} have detailed differences in precision and speed.}
+Python~3 is smarter about division, and will return $1.5$ for both calculations, but there are other places where Python will provide identical looking objects with distinct behavior.
+
+
+\noindent
+In the likely event that you cannot use Python~3, you can still import this behavior by including
+
+\hspace{25pt}\pythoninline{from __future__ import division}
+
+\noindent
+at the top of your file or notebook.
 
 \newthought{COPYING} can be done in two distinct ways, shown abstractly in Figure~\ref{fig:copy}.
 A shallow copy will create another pointer to the same object, so that it can be used in a different part of the code.
 A deep copy will create two distinct objects, so that you can have both an original and modified version.
 Because the first case is common and the second case is expensive, Python copies the pointer by default.
-\begin{marginfigure}
+
+\input{copying}
+
+\begin{marginfigure}[-10\baselineskip]%
     \vspace*{\fill}
     \centering
 
@@ -203,8 +227,8 @@ Because the first case is common and the second case is expensive, Python copies
 The finger pointing at the moon is not the moon}
 \label{fig:copy}
 \end{marginfigure}
-\input{copying}
 
+\pagebreak
 
 \newthought{THE NOTEBOOK STATE} is changed every time you run a command, not
 every time you add a cell.
@@ -213,32 +237,7 @@ This allows you to create confusing code, by removing cells or executing them in
 \input{notebook_nonlinear}
 
 \noindent
-You can debug this problem by paying attention to the numbers in front of the cells.
-Commands are executed in sequence with their numbers, not their position.
 Try to keep your notebook linear, by not changing cells that have already successfully executed.
-
-\pagebreak
-\begin{marginfigure}
-    \vspace*{\fill}
-    \centering
-
-    \def\svgwidth{140pt}\input{matplotlib_default.pdf_tex}
-
-    \vspace*{\fill}
-    \bigskip
-    \def\svgwidth{140pt}\input{matplotlib_seaborn.pdf_tex}
-  \caption{Matplotlib versus seaborn.
-  \hspace{\textwidth}Remember to \pythoninline{import seaborn as sns}.}
-\label{fig:seaborn}
-\end{marginfigure}
-
-\newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and sometimes feels like it. \href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn} will make your plots prettier, but the code can still be clumsy. Seaborn is demonstrated in Figure~\ref{fig:seaborn}.
-
-\noindent
-One early example of clumsiness: histograms return bin edges, not bin centers.
-It is easy to forget this, and add an offset to your analysis.
-
-\input{bin_edges}
 
 \newthought{FINITE PRECISION.}
 There are infinite numbers between 0 and 1, but a finite amount of space on your computer.
@@ -249,18 +248,14 @@ Where would you put it?}
 \input{finite_precision.tex}
 
 \noindent
-This is a real problem for comparisons.
-The loop
+If you aren't implementing grungy low level numerical code, the real problem with finite precision is in comparisons.
 \begin{pythoncode}
         float_sum = 0
         while float_sum != 1:
             float_sum += 0.1
+            print('Infinite Loop!')
 \end{pythoncode}
-
-\noindent
-will run forever.
-
-\begin{figure}[hb]
+\begin{figure}[!hb]
 \small
 $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: \underbrace{1001100110011001100110011001100110011001100110011010}_{\text{decimal}}$$
 \caption{Binary representation of $0.1$. Note that $0.1$ is a repeating decimal in binary, so we will never be able to represent it precisely.}
