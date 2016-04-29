@@ -293,7 +293,8 @@ Where is the relative difference the greatest?
 Describe the nature of the convergence in the center versus the tail of the distribution.
 
 \newthought{DO IT YOURSELF POISSON DISTRIBUTION} \\
-The poisson distribution predicts number of events per bin, when the events are time independent. The probability of $k$ events, given an average of $\lambda$ is
+The poisson distribution predicts number of events per bin, when the events are time independent.
+The probability of $k$ events, given an average of $\lambda$, is
 $$ P(k) = \frac{\lambda^k e^{-\lambda}}{k!} $$
 
 \marginnote{This problem originally from a job interview.
@@ -301,7 +302,7 @@ There is a market for the skills you learn in this lab.}
 \noindent
 Try implementing and plotting this yourself with a power (\pythoninline{u ** k}), exponent (\pythoninline{math.e ** u}), and factorial (\pythoninline{math.factorial(k)}).
 What happens when you use values of $k$ greater than 200?
-How would you make a poisson function that can calculate greater values?
+How would you make a poisson function that can calculate probabilities for large values of $k$?
 \pagebreak
 
 \section*{More Reading}
