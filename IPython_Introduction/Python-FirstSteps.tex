@@ -169,10 +169,6 @@ To keep this straight, it helps to imagine the index as being located immediatel
 \newthought{MATPLOTLIB} is largely based on Matlab circa 2002, and sometimes feels like it. \href{https://stanford.edu/~mwaskom/software/seaborn/index.html}{Seaborn}, shown in Figure~\ref{fig:seaborn}, will make prettier plots.
 Get it with \textinline{conda install seaborn} on the command line, though this won't make your code any less ugly.
 
-\noindent
-One early example of clumsiness: histograms return bin edges, not bin centers.
-It is easy to forget this, and add an offset to your analysis.
-
 \begin{marginfigure}
     \vspace*{\fill}
     \centering
@@ -186,6 +182,12 @@ It is easy to forget this, and add an offset to your analysis.
   \hspace{\textwidth}Remember to \pythoninline{import seaborn as sns}}
 \label{fig:seaborn}
 \end{marginfigure}
+
+\noindent
+One early example of clumsiness: histograms return bin edges, not bin centers.
+It is easy to forget this, and add an offset to your analysis.
+\sidenote[][2\baselineskip]{The real moral of this is to read the documentation.
+\textinline{scipy.optimize.curve_fit} is another function that does not do exactly what you think it does.}
 
 \input{bin_edges}
 
@@ -268,16 +270,15 @@ $$\underbrace{0}_{\text{sign}} \: \underbrace{01111111011}_{\text{exponent}} \: 
 
 \noindent
 Check your result on the dead time problem in the data analysis by simulating a poisson process.
-Divide a period of at least \SI{20}{\micro\second} into bins of \SI{1}{\nano\second}, each of which with either one or zero photons, using
+Divide a period of at least \SI{20}{\micro\second} into bins of \SI{1}{\nano\second}. Put either zero or one photons in each bin with
 \begin{pythoncode}
         np.random.choice([0, 1], num_bins, p=[prob_1, prob_2])
 \end{pythoncode}
-to generate the data, and a loop
+Find each photon and drop the events that occur in the subsequent dead time.
 \begin{pythoncode}
         for photon_index in np.nonzero(bins)[0]:
             bins[dead_time_start:dead_time_end] = 0
 \end{pythoncode}
-to drop the counts that fall in the dead time.
 
 \noindent
 What is the efficiency of this detector?
@@ -291,6 +292,16 @@ Where is the absolute difference the greatest?
 Where is the relative difference the greatest?
 Describe the nature of the convergence in the center versus the tail of the distribution.
 
+\newthought{DO IT YOURSELF POISSON DISTRIBUTION} \\
+The poisson distribution predicts number of events per bin, when the events are time independent. The probability of $k$ events, given an average of $\lambda$ is
+$$ P(k) = \frac{\lambda^k e^{-\lambda}}{k!} $$
+
+\marginnote{This problem originally from a job interview.
+There is a market for the skills you learn in this lab.}
+\noindent
+Try implementing and plotting this yourself with a power (\pythoninline{u ** k}), exponent (\pythoninline{math.e ** u}), and factorial (\pythoninline{math.factorial(k)}).
+What happens when you use values of $k$ greater than 200?
+How would you make a poisson function that can calculate greater values?
 \pagebreak
 
 \section*{More Reading}
